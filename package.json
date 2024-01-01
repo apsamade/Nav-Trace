@@ -1,0 +1,32 @@
+{
+  "name": "nav-trace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "start-server": "server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.3",
+    "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
+    "helmet": "^7.1.0",
+    "imgbb-uploader": "^1.5.1",
+    "mongoose": "^8.0.3",
+    "nodemailer": "^6.9.8",
+    "nodemon": "^3.0.2",
+    "path": "^0.12.7",
+    "pdfkit": "^0.14.0",
+    "stripe": "^14.10.0"
+  }
+}
