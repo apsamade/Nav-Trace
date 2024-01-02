@@ -10,6 +10,8 @@ const path = require('path')
 
 require('dotenv').config()
 
+const userRoutes = require('./routes/user')
+
 const port = process.env.PORT || 3030;
 const uri = process.env.URI;
 
@@ -44,6 +46,8 @@ app.use(express.static(path.dirname('public')))
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(fileUpload())
+
+app.use(userRoutes)
 
 mongoose.connect(uri).then(()=>{
     console.log(`connexion à la bdd établie avec succès`)

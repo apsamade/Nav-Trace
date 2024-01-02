@@ -1,0 +1,30 @@
+header{
+    position: relative;
+    background-image: url(/public/img/background/background_mustang.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    min-height: 80vh;
+}
+header::before{
+    content: '';
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+header h1{
+    text-transform: capitalize;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: -1px;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    z-index: 1;
+    font-size: 4rem;
+    margin: 0px 25px 0 6%;
+    padding: 50px 0 0;
+    text-shadow: 1px 1px 1px black;
+}

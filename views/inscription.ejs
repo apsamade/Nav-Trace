@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Trace | Inscription</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/home.css">
+    <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
+</head>
+<body>
+    <%- include('partials/nav') %>
+    <main>
+        <h1>Inscription</h1>
+        <form method="POST">
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="password" name="mdp" id="mdp" placeholder="Mot de passe" required>
+            <input type="password" name="mdpv" id="mdpv" placeholder="Mot de passe de confirmation" required>
+            <input type="submit" value="Enregistrer">
+        </form>
+    </main>
+</body>
+</html>
