@@ -52,7 +52,10 @@ form{
     align-items: center;
     justify-content: center;
 }
-form input{
+form textarea{
+    flex-basis: 100% !important;
+}
+form input, form textarea{
     flex-grow: 1;
     flex-basis: 315px;
     display: block;
@@ -69,6 +72,7 @@ form input[type=submit]{
     color: white;
     flex-basis: 100%;
     transition: background-color 0.3s;
+    cursor: pointer;
 }
 form input[type=submit]:hover{
     background-color: rgb(52, 92, 223);

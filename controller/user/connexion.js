@@ -14,7 +14,12 @@ exports.postConnexion = async (req, res, next)=>{
             console.log(req.session.user)
             res.redirect('/')
         }else{
-            res.render('connexion')
+            if(!userExisting){
+                return res.render('connexion', {error : 'Adresse Email non trouvée.'})
+            }
+            if(!bcrypt.compareSync(mdp, userExisting.mdp)){
+                return res.render('connexion', {error : 'Mot de passe inccorect.'})
+            }
         }
     } catch (error) {
         console.log(error)

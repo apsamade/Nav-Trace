@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nav Trace | Se Connecter</title>
     <link rel="stylesheet" href="/public/css/style.css">
-    <link rel="stylesheet" href="/public/css/login.css">
+    <link rel="stylesheet" href="/public/css/contact.css">
     <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
 </head>
 <body>
     <%- include('partials/nav') %>
     <main>
         <header>
-            <h1>Se Connecter</h1>
+            <h1>Contactez nous</h1>
             <form method="POST">
                 <input type="email" name="email" id="email" placeholder="Email" required>
-                <input type="password" name="mdp" id="mdp" placeholder="Mot de passe" required>
-                <input type="submit" value="Se Connecter">
+                <input type="text" name="object" id="object" placeholder="Object du message" required>
+                <textarea placeholder="Ecrivez votre message ..." name="message" id="message" style="resize: vertical;"></textarea>
+                <input type="submit" value="Envoyer">
                 <% if(typeof error != 'undefined'){ %>
                     <div class="error">
                         <%= error %>
                     </div>
                 <% } %>
             </form>
-            <a href="/inscription">S'inscrire</a>
         </header>
         <section class="bckg">
 

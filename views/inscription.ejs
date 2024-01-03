@@ -18,6 +18,11 @@
                 <input type="password" name="mdp" id="mdp" placeholder="Mot de passe" required>
                 <input type="password" name="mdpv" id="mdpv" placeholder="Mot de passe de confirmation" required>
                 <input type="submit" value="S'inscrire">
+                <% if(typeof error != 'undefined'){ %>
+                    <div class="error">
+                        <%= error %>
+                    </div>
+                <% } %>
             </form>
             <a href="/connexion">Se Connecter</a>
         </header>

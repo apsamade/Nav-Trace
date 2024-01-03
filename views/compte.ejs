@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nav Trace | 404 Introuvé</title>
+    <title>Nav Trace | Se Connecter</title>
     <link rel="stylesheet" href="/public/css/style.css">
-    <link rel="stylesheet" href="/public/css/error.css">
+    <link rel="stylesheet" href="/public/css/compte.css">
     <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
 </head>
 <body>
@@ -18,8 +18,13 @@
     <% }else{ %>
         <%- include('partials/nav') %>
     <% } %>
-    <header>
-        <h1>Erreur 404 | Non trouvée</h1>
-    </header>
+        <header>
+            <h1>Mon Compte</h1>
+            <%= user.email %>
+            
+        </header>
+        <form method="POST">
+            <input type="submit" value="Deconnexion">
+        </form>    
 </body>
 </html>
