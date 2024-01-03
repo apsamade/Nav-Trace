@@ -9,7 +9,16 @@
     <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
 </head>
 <body>
-    <%- include('partials/nav') %>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('partials/nav') %>
+    <% } %>
+    
     <header>
         <h1>Commandez un appareil GPS !</h1>
     </header>
