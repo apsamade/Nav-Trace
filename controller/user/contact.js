@@ -12,8 +12,8 @@ exports.getContact = async (req, res, next) => {
 exports.postContact = (req, res, next) => {
     const user = req.session.user
     const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
+        host: "smtp.ionos.fr",
+        port: 465,
         secure: false,
         auth: {
             user: monMail,
