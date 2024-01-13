@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Trace | Admin Produit</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/boutiqueAdmin.css">
+    <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
+</head>
+<body>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('../partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('../partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('../partials/nav') %>
+    <% } %>
+        <form method="post" enctype="multipart/form-data">
+            <h1>Ajout d'un produit</h1>
+            <% if(typeof message != 'undefined'){ %>
+                <div class="message">
+                    <span><%= message %></span>
+                        <div class="info">
+                            <img src="<%= projet.image %>" alt="<%= projet.name %>">
+                            <h4><%= projet.name %></h4>
+                        </div>
+                    </a>
+                </div>
+            <% }else{ %>
+                <div>
+                    <input type="text" name="name" id="name" placeholder="Nom du projet ..." required>
+                    <input type="file" name="image" id="image" placeholder="Image du projet " required>
+                    <textarea style="flex-basis: 100%" name="description" id="description" style="resize: vertical;" placeholder="Description du produit ..." required></textarea>
+                    <input type="number" name="prix" id="prix" placeholder="Prix d'achat à écrire en centime d'euros" required>
+                    <input type="number" name="prixAbonnement" id="prixAbonnement" placeholder="Prix d'abonnement à écrire en centime d'euros" required>
+                    <input type="submit" value="Valider">
+                </div>
+            <% } %>
+        </form>
+</body>
+</html>
