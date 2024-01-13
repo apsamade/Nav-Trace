@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
-const monMdp = process.env.MONMDP;
-const monMail = process.env.MONMAIL;
+const monMdp = process.env.MON_MDP;
+const monMail = process.env.MON_EMAIL;
 
 exports.getContact = async (req, res, next) => {
     const user = req.session.user
@@ -12,8 +12,8 @@ exports.getContact = async (req, res, next) => {
 exports.postContact = (req, res, next) => {
     const user = req.session.user
     const transporter = nodemailer.createTransport({
-        host: "smtp.ionos.fr",
-        port: 465,
+        host: "smtp.gmail.com",
+        port: 587,
         secure: false,
         auth: {
             user: monMail,

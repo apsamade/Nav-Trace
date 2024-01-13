@@ -9,21 +9,35 @@
     <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
 </head>
 <body>
-    <%- include('partials/nav') %>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('partials/nav') %>
+    <% } %>
     <main>
         <header>
             <h1>Contactez nous</h1>
-            <form method="POST">
-                <input type="email" name="email" id="email" placeholder="Email" required>
-                <input type="text" name="object" id="object" placeholder="Object du message" required>
-                <textarea placeholder="Ecrivez votre message ..." name="message" id="message" style="resize: vertical;"></textarea>
-                <input type="submit" value="Envoyer">
-                <% if(typeof error != 'undefined'){ %>
-                    <div class="error">
-                        <%= error %>
-                    </div>
-                <% } %>
-            </form>
+            <% if(typeof message != 'undefined'){ %>
+                <div class="message">
+                    <%= message %>
+                </div>
+            <% }else{ %>
+                <form method="POST">
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="text" name="object" id="object" placeholder="Object du message" required>
+                    <textarea placeholder="Ecrivez votre message ..." name="message" id="message" style="resize: vertical;"></textarea>
+                    <input type="submit" value="Envoyer">
+                    <% if(typeof error != 'undefined'){ %>
+                        <div class="error">
+                            <%= error %>
+                        </div>
+                    <% } %>
+                </form>
+            <% } %>
         </header>
         <section class="bckg">
 
