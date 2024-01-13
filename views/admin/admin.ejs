@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Bouderga | Admin</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/admin.css">
+    <link rel="shortcut icon" href="/public/img/logo/solo_ab_logo.png" type="image/x-icon">
+</head>
+<body>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('../partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('../partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('../partials/nav') %>
+    <% } %>
+        <header>
+            <h1>Admin</h1>
+            <span><%= user.email %></span>
+        </header>
+        <section class="admin">
+            <h3>Boutique</h3>
+            <a href="/admin/boutique/add-product">Ajout d'un produit</a>
+            <a href="/admin/boutique">Modifier / Supprimer un produit</a>
+        </section>
+        <section class="admin">
+            <h3>Blog</h3>
+            <a href="/admin/blog/add">Ajout d'un article</a>
+            <a href="/admin/blog">Modifier / Supprimer un article</a>
+        </section>
+        <form method="POST">
+            <input type="submit" value="Deconnexion">
+        </form>    
+</body>
+</html>

@@ -11,6 +11,7 @@ const path = require('path')
 require('dotenv').config()
 
 const userRoutes = require('./routes/user')
+const adminRoutes = require('./routes/admin')
 const errController = require('./controller/middleware/error404')
 
 const port = process.env.PORT || 3030;
@@ -49,6 +50,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(fileUpload())
 
 app.use(userRoutes)
+app.use(adminRoutes)
 app.use(errController.get404)
 
 mongoose.connect(uri).then(()=>{

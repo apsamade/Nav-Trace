@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Bouderga | Compte</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/adminBlog.css">
+    <link rel="shortcut icon" href="/public/img/logo/solo_ab_logo.png" type="image/x-icon">
+</head>
+<body>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('../partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('../partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('../partials/nav') %>
+    <% } %>
+        <form method="post">
+            <h1>Articles de blog</h1>
+        </form>
+</body>
+</html>
