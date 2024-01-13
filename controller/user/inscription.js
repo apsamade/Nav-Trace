@@ -1,7 +1,7 @@
 const User = require('../../models/user')
 
 exports.getInscription = (req, res, next)=>{
-    res.render('inscription')
+    res.render('login/inscription')
 }
 
 exports.postInscription = async (req, res, next)=>{
@@ -9,7 +9,7 @@ exports.postInscription = async (req, res, next)=>{
     const userExisting = await User.findOne({email: email})
     try {
         if(userExisting){
-            res.render('inscription', {error: 'Email déjà utiliser.'})
+            res.render('login/inscription', {error: 'Email déjà utiliser.'})
         }else{
             if(mdp === mdpv){
                 const user = new User({
@@ -26,11 +26,11 @@ exports.postInscription = async (req, res, next)=>{
                 req.session.user = user;
                 res.redirect('/') 
             }else{
-                res.render('inscription', {error: 'Mot de passe de confirmation différent.'})
+                res.render('login/inscription', {error: 'Mot de passe de confirmation différent.'})
             }
         }
     } catch (error) {
         console.log(error)
-        res.render('inscription', {error: 'Erreur inattendue lors de la création de compte. Veuillez nous signaler cette erreur sur notre page de contact.'})
+        res.render('login/inscription', {error: 'Erreur inattendue lors de la création de compte. Veuillez nous signaler cette erreur sur notre page de contact.'})
     }
 }
