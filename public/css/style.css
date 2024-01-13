@@ -167,6 +167,7 @@ aside {
     aside a{
         color: white;
         text-decoration: none;
+        font-size: 25px;
     }
     aside ul li{
         list-style: none;      
