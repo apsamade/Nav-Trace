@@ -9,6 +9,7 @@ h1{
     display: flex;
     align-items: flex-start;
     justify-content: start;
+    flex-wrap: wrap;
     margin: 15px auto;
     width: 90%;
 }
