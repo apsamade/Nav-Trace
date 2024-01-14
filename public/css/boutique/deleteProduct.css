@@ -30,11 +30,11 @@ form h2{
     font-size: 1.7rem;
 }
 form .price{
-    margin: 10px;
+    margin: 10px 0;
 }
 form .price span:not(.prix){
     display: block;
-    margin: 10px;
+    margin: 10px 0;
 }
 form .modif{
     width: calc(100% -20px);
