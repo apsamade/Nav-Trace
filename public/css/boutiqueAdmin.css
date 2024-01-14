@@ -35,9 +35,9 @@ form{
     border-radius: 6px;
     background-color: #202020;
 }
-form div{
+form .info{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -87,8 +87,12 @@ header a{
 .message span{
     color: green;
     padding: 10px;
+    display: block;
     border-radius: 6px;
     background-color: white;
+    text-align: center;
+    max-width: 300px;
+    margin: 15px auto;
 }
 .info{
     color: white;
@@ -96,6 +100,21 @@ header a{
 .info img{
     width: 100%;
     display: block;
+    max-width: 400px;
+    max-height: 400px;
+}
+.info h4{
+    text-align: center;
+    font-size: 1.5rem;
+}
+.price{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.price span{
+    margin: 15px;
+    padding: 14px;
 }
 @media screen and (max-width: 1100px) {
     .bckg{

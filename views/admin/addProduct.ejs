@@ -23,18 +23,23 @@
             <% if(typeof message != 'undefined'){ %>
                 <div class="message">
                     <span><%= message %></span>
-                        <div class="info">
-                            <img src="<%= projet.image %>" alt="<%= projet.name %>">
-                            <h4><%= projet.name %></h4>
+                    <div class="info">
+                        <img src="<%= produit.image %>" alt="<%= produit.name %>">
+                        <div>
+                            <h4><%= produit.name %></h4>
+                            <div class="price">
+                                <span><%= produit.prix_achat/100 %> €</span>
+                                <span><%= produit.prix_abonnement/100 %> €</span>
+                            </div>                            
                         </div>
-                    </a>
+                    </div>
                 </div>
             <% }else{ %>
-                <div>
+                <div class="info"  style="flex-wrap: wrap; flex-direction: initial;">
                     <input type="text" name="name" id="name" placeholder="Nom du produit ..." required>
                     <input type="file" name="image" id="image" placeholder="Image du produit " required>
                     <textarea style="flex-basis: 100%" name="description" id="description" style="resize: vertical;" placeholder="Description du produit ..." required></textarea>
-                    <input type="number" name="prix" id="prix" placeholder="Prix d'achat à écrire en centime d'euros" required>
+                    <input type="number" name="prixAchat" id="prixAchat" placeholder="Prix d'achat à écrire en centime d'euros" required>
                     <input type="number" name="prixAbonnement" id="prixAbonnement" placeholder="Prix d'abonnement à écrire en centime d'euros" required>
                     <input type="submit" value="Valider">
                 </div>

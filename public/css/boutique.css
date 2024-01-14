@@ -5,3 +5,38 @@ h1{
     margin: 15px auto;
     text-align: center;
 }
+.top-vente{
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    margin: 15px auto;
+    width: 90%;
+}
+
+.top-vente .produit{
+    width: 325px;
+    margin: 10px;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4);
+    background-color: #ceeaff;
+}
+.top-vente .produit img{
+    width: 100%;
+    margin: 5px;
+    border-radius: 6px;
+}
+.top-vente .produit h4{
+    font-size: 1.4rem;
+    margin: 15px 0;
+}
+.top-vente .produit .price{
+    margin: 15px 0;
+}
+.top-vente .produit .price span:not(.produit .price .prix){
+    margin: 5px 0;
+    display: block;
+}
+.top-vente .produit .price .prix{
+    color: green;
+}

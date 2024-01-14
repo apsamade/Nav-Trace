@@ -1,6 +1,9 @@
+const Product = require('../../models/product')
+
 exports.getBoutique = async (req, res, next)=>{
     const user = req.session.user
-    res.render('boutique/boutique', { user })
+    const produits = await Product.find()
+    res.render('boutique/boutique', { user, produits })
 }
 
 exports.postBoutique = (req, res, next)=>{
