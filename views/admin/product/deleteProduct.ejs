@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Trace | Delete Product</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/boutique/deleteProduct.css">
+    <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
+</head>
+<body>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('../../partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('../../partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('../../partials/nav') %>
+    <% } %>
+    <header>
+        <h1>Supression du produit <%= produit.name %></h1>
+    </header>
+    <form method="POST">
+        <div class="produit" href="boutique/<%= produit._id %>">
+            <img src="<%= produit.image %>" alt="<%= produit.name %>">
+            <h2><%= produit.name %></h2>
+            <div class="price">
+                <span>Prix d'achat : 
+                    <% if(produit.prix_achat/100 < 100){ %>
+                        <span class="prix" style="color: green;"><%= produit.prix_achat/100 %>€</span>
+                    <% }else if(produit.prix_achat/100 < 200 && produit.prix_achat/100 > 100){ %>
+                        <span class="prix" style="color: orange;"><%= produit.prix_achat/100 %>€</span>
+                    <% }else{ %>
+                        <span class="prix" style="color: red;"><%= produit.prix_achat/100 %>€</span>
+                    <% } %>
+                </span>
+                <span>Prix d'abonnement mensuel : 
+                    <span class="prix"><%= produit.prix_abonnement/100 %>€</span>
+                </span>
+            </div>
+            <div class="modif">
+                <a href="/admin/boutique">Annuler</a>
+                <input type="submit" value="Supprimer">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

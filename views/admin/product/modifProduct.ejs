@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Trace | Modif Product</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/boutique/modifProduct.css">
+    <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
+</head>
+<body>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('../../partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('../../partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('../../partials/nav') %>
+    <% } %>
+    <header>
+        <h1>Modification du produit <%= produit.name %></h1>
+    </header>
+    <form method="POST">
+        <div class="produit" href="boutique/<%= produit._id %>">
+            <img src="<%= produit.image %>" alt="<%= produit.name %>">
+            <div class="price">
+                <input type="text" name="name" id="name" placeholder="Nomp du produit : <%= produit.name %>">
+                <input type="file" name="image" id="image">
+                <input class="prix" placeholder="Prix d'achat : <%= produit.prix_achat/100 %>€">
+                <input class="prix" placeholder="Prix d'abonnement mensuel : <%= produit.prix_abonnement/100 %>€">
+                <textarea name="description" id="description" style="resize: vertical;" placeholder="Description du produit ..."></textarea>
+            </div>
+            <div class="modif">
+                <a href="/admin/boutique">Annuler</a>
+                <input type="submit" value="Modifier">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

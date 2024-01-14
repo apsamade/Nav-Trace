@@ -6,7 +6,7 @@ const path = require('path')
 exports.getAddBlog = async (req, res, next) => {
     const user = req.session.user
     if (user && user.admin) {
-        res.render('admin/addBlog', { user })
+        res.render('admin/blog/addBlog', { user })
     } else {
         res.redirect('/')
     }

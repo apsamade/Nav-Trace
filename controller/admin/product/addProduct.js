@@ -6,7 +6,7 @@ const path = require('path')
 exports.getAddProduct = async (req, res, next) => {
     const user = req.session.user
     if (user && user.admin) {
-        res.render('admin/addProduct', { user })
+        res.render('admin/product/addProduct', { user })
     } else {
         res.redirect('/')
     }
@@ -36,7 +36,7 @@ exports.postAddProduct = async (req, res, next) => {
                         });
                         await produit.save();
                         fs.unlinkSync(uploadPath)
-                        res.render('admin/addProduct', {user, message: 'produit ajouté avec succès !', produit})
+                        res.render('admin/product/addProduct', {user, message: 'produit ajouté avec succès !', produit})
                     } catch (error) {
                         console.error('Error uploading to ImgBB:', error.message);
                         res.redirect('/admin');

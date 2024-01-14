@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nav Trace | Compte</title>
+    <title>Nav Trace | Boutique Admin</title>
     <link rel="stylesheet" href="/public/css/style.css">
-    <link rel="stylesheet" href="/public/css/boutiqueAdmin.css">
+    <link rel="stylesheet" href="/public/css/boutique/boutiqueAdmin.css">
     <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
 </head>
 <body>
     <% if(user){ %>
         <% if(user.admin){ %>
-            <%- include('../partials/navAdmin') %>
+            <%- include('../../partials/navAdmin') %>
         <% }else{ %>
-            <%- include('../partials/navUser') %>
+            <%- include('../../partials/navUser') %>
         <% } %>
     <% }else{ %>
-        <%- include('../partials/nav') %>
+        <%- include('../../partials/nav') %>
     <% } %>
     <header>
         <h1>Boutique Admin</h1>
@@ -42,8 +42,8 @@
                     </span>
                 </div>
                 <div class="modif">
-                    <a href="/">Modifier</a>
-                    <a href="/">Supprimer</a>
+                    <a href="/admin/boutique/modif-product/<%= produit._id %>">Modifier</a>
+                    <a href="/admin/boutique/delete-product/<%= produit._id %>">Supprimer</a>
                 </div>
             </div>
         <% }) %>

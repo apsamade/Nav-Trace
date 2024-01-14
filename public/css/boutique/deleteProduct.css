@@ -1,0 +1,71 @@
+body{
+    padding-top: 90px;
+}
+nav{
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+}
+h1{
+    margin: 15px auto;
+    text-align: center;
+}
+form{
+    background-color: #252525;
+    padding: 12px;
+    border-radius: 6px;
+    width: 60%;
+    min-width: 325px;
+    max-width: 1000px;
+    color: white;
+    margin: 15px auto;
+}
+form img{
+    width: 30%;
+    min-width: 300px;
+    display: block;
+    margin: 15px auto;
+}
+form h2{
+    text-align: center;
+    margin: 15px auto;
+    font-size: 1.7rem;
+}
+form .price{
+    margin: 10px;
+}
+form .price span:not(.prix){
+    display: block;
+    margin: 10px;
+}
+form .modif{
+    width: calc(100% -20px);
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form .modif a, form .modif input{
+    width: 100%;
+    margin: 10px;
+    padding: 12px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    color: black;
+    font-family: 'Lexend', sans-serif;
+    font-size: 18px;
+    transition: transform 0.3s, color 0.3s, background-color 0.3s;
+}
+form .modif a:hover, form .modif input:hover{
+    transform: scale(1.05);
+    color: white;
+}
+form .modif input:hover{
+    background-color: rgb(212, 66, 66);
+}
+form .modif a:hover{
+    background-color: rgb(66, 101, 212);
+}
