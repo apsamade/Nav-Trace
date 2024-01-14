@@ -23,7 +23,7 @@
         </header>
         <section class="top-vente">
             <% produits.forEach(produit =>{ %>
-                <div class="produit">
+                <a class="produit" href="boutique/<%= produit._id %>">
                     <img src="<%= produit.image %>" alt="<%= produit.name %>">
                     <h4><%= produit.name %></h4>
                     <div class="price">
@@ -39,8 +39,8 @@
                         <span>Prix d'abonnement mensuel : 
                             <span class="prix"><%= produit.prix_abonnement/100 %>€</span>
                         </span>
-                    </div>
                 </div>
+                </a>
             <% }) %>
         </section>
 </body>
