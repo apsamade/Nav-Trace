@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nav Trace | Compte</title>
     <link rel="stylesheet" href="/public/css/style.css">
-    <link rel="stylesheet" href="/public/css/adminBlog.css">
+    <link rel="stylesheet" href="/public/css/boutiqueAdmin.css">
     <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
 </head>
 <body>
@@ -18,8 +18,35 @@
     <% }else{ %>
         <%- include('../partials/nav') %>
     <% } %>
-        <form method="post">
-            <h1>Boutique Admin</h1>
-        </form>
+    <header>
+        <h1>Boutique Admin</h1>
+    </header>
+    <section class="top-vente">
+        <% produits.forEach(produit =>{ %>
+            <div class="produit" href="boutique/<%= produit._id %>">
+                <img src="<%= produit.image %>" alt="<%= produit.name %>">
+                <h4><%= produit.name %></h4>
+                
+                <div class="price">
+                    <span>Prix d'achat : 
+                        <% if(produit.prix_achat/100 < 100){ %>
+                            <span class="prix" style="color: green;"><%= produit.prix_achat/100 %>€</span>
+                        <% }else if(produit.prix_achat/100 < 200 && produit.prix_achat/100 > 100){ %>
+                            <span class="prix" style="color: orange;"><%= produit.prix_achat/100 %>€</span>
+                        <% }else{ %>
+                            <span class="prix" style="color: red;"><%= produit.prix_achat/100 %>€</span>
+                        <% } %>
+                    </span>
+                    <span>Prix d'abonnement mensuel : 
+                        <span class="prix"><%= produit.prix_abonnement/100 %>€</span>
+                    </span>
+                </div>
+                <div class="modif">
+                    <a href="/">Modifier</a>
+                    <a href="/">Supprimer</a>
+                </div>
+            </div>
+        <% }) %>
+    </section>
 </body>
 </html>

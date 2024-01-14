@@ -1,10 +1,10 @@
-const Article = require('../../models/article')
+const Product = require('../../models/product')
 
 exports.getProductAdmin = async (req, res, next)=>{
     const user = req.session.user
-    const articles = await Article.find()
+    const produits = await Product.find()
     if(user && user.admin){
-        res.render('admin/boutiqueAdmin', { user, articles })
+        res.render('admin/boutiqueAdmin', { user, produits })
     }else{
         res.redirect('/')
     }
