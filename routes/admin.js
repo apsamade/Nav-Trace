@@ -3,11 +3,11 @@ const router = express.Router()
 
 const adminController = require('../controller/admin/admin')
 
-const addBlogController = require('../controller/admin/addBlog')
-const blogAdminController = require('../controller/admin/adminBlog')
+const addBlogController = require('../controller/admin/blog/addBlog')
+const blogAdminController = require('../controller/admin/blog/adminBlog')
 
-const addProductController = require('../controller/admin/addProduct')
-const boutiqueAdminController = require('../controller/admin/adminProduct')
+const addProductController = require('../controller/admin/product/addProduct')
+const boutiqueAdminController = require('../controller/admin/product/adminProduct')
 
 router.get('/admin', adminController.getAdmin)
 router.post('/admin', adminController.postAdmin)

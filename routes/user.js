@@ -3,8 +3,8 @@ const router = express.Router()
 
 const homeController = require('../controller/user/home')
 
-const connexionController = require('../controller/user/connexion')
-const inscriptionController = require('../controller/user/inscription')
+const connexionController = require('../controller/user/login/connexion')
+const inscriptionController = require('../controller/user/login/inscription')
 
 const contactController = require('../controller/user/contact')
 

@@ -1,4 +1,4 @@
-const Product = require('../../models/product')
+const Product = require('../../../models/product')
 const fs = require('fs')
 const imgbbUploader = require('imgbb-uploader');
 const path = require('path')

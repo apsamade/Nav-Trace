@@ -1,4 +1,4 @@
-const Article = require('../../models/article')
+const Article = require('../../../models/article')
 
 exports.getBlogAdmin = async (req, res, next)=>{
     const user = req.session.user

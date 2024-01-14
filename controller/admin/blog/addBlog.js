@@ -1,4 +1,4 @@
-const Article = require('../../models/article')
+const Article = require('../../../models/article')
 const fs = require('fs')
 const imgbbUploader = require('imgbb-uploader');
 const path = require('path')
