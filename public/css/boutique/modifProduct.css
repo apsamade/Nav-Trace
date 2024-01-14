@@ -95,3 +95,15 @@ form .modif input:hover{
 form .modif a:hover{
     background-color: rgb(66, 101, 212);
 }
+.message{
+    margin: 50px auto;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    width: 60%;
+    min-width: 325px;
+    max-width: 1000px;
+    color: red;
+    background-color: #323232;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4);
+}
