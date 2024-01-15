@@ -1,6 +1,3 @@
-nav ul li:nth-child(1) a{
-    color: rgb(55, 92, 255);
-}
 header{
     position: relative;
     background-image: url(/public/img/background/background_white_4x4_black.jpg);

@@ -4,9 +4,6 @@ body{
 nav{
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
 }
-nav ul li:nth-child(2) a{
-    color: rgb(55, 92, 255);
-}
 h1{
     margin: 50px auto;
     text-align: center;

@@ -31,6 +31,9 @@ nav ul li{
     list-style: none;
     margin: 5px;
     display: block;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: pointer;
 }
 nav .logo img{
     width: 80px;
@@ -100,7 +103,22 @@ aside {
     box-shadow: 0 0 3px 0;
     color: red;
 }
+nav .panier{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+nav .panier:hover{
+    background-color: white;
 
+}
+.panier img{
+    width: 30px;
+    margin: 10px;
+}
 @media screen and (max-width: 1100px) {
     nav{
         display: none;
@@ -172,11 +190,17 @@ aside {
     aside ul li{
         list-style: none;      
         margin: 10px;
-        font-size: 22px;  
+        font-size: 25px;  
+        color: white;
+        cursor: pointer;
     }
     aside ul{
         min-width: 80%;
         margin: 10px 0;
+    }
+    aside .panier{
+        display: flex;
+        align-items: center;
     }
 
 }
