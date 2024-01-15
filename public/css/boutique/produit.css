@@ -89,6 +89,9 @@ main .descriptif form .info-prix span:not(.prix){
     body{
         padding-top: 15px;
     }
+    main .descriptif h1{
+        font-size: 2.5rem;
+    }
     main{
         width: 95%;
     }
