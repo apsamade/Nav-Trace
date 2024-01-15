@@ -1,0 +1,86 @@
+body{
+    padding-top: 90px;  
+    background-color: #9df0ff;  
+}
+main{
+    margin: 15px auto;
+    width: 75%;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: white;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 80vh;
+}
+main .images{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: calc(500px);
+    margin: 15px;
+}
+
+main .images .principal-image{
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #9df0ff;
+    margin: 10px;
+    display: block;
+    max-width: 500px;
+    min-width: 325px;
+}
+main .imgs{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+main .imgs img{
+    width: 30%;
+    background-color: #9df0ff;
+    border-radius: 6px;
+    padding: 10px;
+}
+main .descriptif{
+    min-width: 325px;
+    margin: 15px;
+    width: 40%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+main .descriptif h1{
+    font-size: 3.5rem;
+}
+main .descriptif p{
+    line-height: 150%;
+    margin: 15px 0;
+}
+main .descriptif form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    margin: 25px auto;
+}
+main .descriptif form .info-prix{
+    flex-basis: 325px;
+    flex-grow: 1;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    margin: 5px;
+    background-color: rgb(37, 124, 255);
+    color: white;
+    font-family: 'Lexend', sans-serif;
+}
+main .descriptif form button, main .descriptif form select{
+    cursor: pointer;
+}
+main .descriptif form .info-prix span:not(.prix){
+    margin: 10px 0;
+    display: block;
+}

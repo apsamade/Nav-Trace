@@ -1,4 +1,4 @@
-const Product = require('../../models/product')
+const Product = require('../../../models/product')
 
 exports.getBoutique = async (req, res, next)=>{
     const user = req.session.user

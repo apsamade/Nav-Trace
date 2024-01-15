@@ -10,7 +10,8 @@ const contactController = require('../controller/user/contact')
 
 const blogController = require('../controller/user/blog')
 
-const boutiqueController = require('../controller/user/boutique')
+const boutiqueController = require('../controller/user/boutique/boutique')
+const produitController = require('../controller/user/boutique/produit')
 
 const compteController = require('../controller/user/compte')
 
@@ -28,6 +29,9 @@ router.post('/blog', blogController.postBlog)
 
 router.get('/boutique', boutiqueController.getBoutique)
 router.post('/boutique', boutiqueController.postBoutique)
+
+router.get('/boutique/:id', produitController.getProduct)
+router.post('/boutique/:id', produitController.postProduct)
 
 router.get('/account', compteController.getCompte)
 router.post('/account', compteController.postCompte)

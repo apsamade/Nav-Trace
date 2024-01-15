@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Trace | <%= produit.name %></title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/boutique/produit.css">
+    <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
+</head>
+<body>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('../partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('../partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('../partials/nav') %>
+    <% } %>
+    <main>
+        <section class="images">
+            <img class="principal-image" src="<%= produit.image %>" alt="<%= produit.name %>">
+            <div class="imgs">
+                <img src="<%= produit.image %>" alt="<%= produit.name %>">
+                <img src="<%= produit.image %>" alt="<%= produit.name %>">
+                <img src="<%= produit.image %>" alt="<%= produit.name %>">
+            </div>
+        </section>   
+        <section class="descriptif">
+            <div>
+                <h1><%= produit.name %></h1>
+                <p><%= produit.description %></p>                
+            </div>
+
+            <form method="POST" class="prix">
+                <button class="info-prix" type="button">Ajouter au panier</button>
+                <select style="flex-basis: 30px;" class="info-prix" name="quantite" id="quantite">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button class="info-prix" type="button">Acheter en 1 clic</button>
+                <div style="background-color: white; color: black; display: flex; flex-direction: column;" class="info-prix">
+                    <span>Prix d'achat : 
+                        <% if(produit.prix_achat/100 < 100){ %>
+                            <span class="prix" style="color: green;"><%= produit.prix_achat/100 %>€</span>
+                        <% }else if(produit.prix_achat/100 < 200 && produit.prix_achat/100 > 100){ %>
+                            <span class="prix" style="color: orange;"><%= produit.prix_achat/100 %>€</span>
+                        <% }else{ %>
+                            <span class="prix" style="color: red;"><%= produit.prix_achat/100 %>€</span>
+                        <% } %>
+                    </span>
+                    <span>Prix d'abonnement mensuel : 
+                        <span class="prix" style="color: green;"><%= produit.prix_abonnement/100 %>€</span>
+                    </span>                  
+                </div>
+            </form>
+        </section>     
+    </main>
+
+</body>
+</html>
