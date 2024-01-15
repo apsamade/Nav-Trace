@@ -20,16 +20,19 @@
     <% } %>
     <header>
         <h1>Modification du produit <%= produit.name %></h1>
+        <% if(typeof message != 'undefined'){ %>
+            <div style="color: green;" class="message"><%= message %></div>
+        <% } %>
     </header>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <div class="produit" href="boutique/<%= produit._id %>">
             <img src="<%= produit.image %>" alt="<%= produit.name %>">
             <div class="price">
                 <input type="text" name="name" id="name" placeholder="Nomp du produit : <%= produit.name %>">
                 <input type="file" name="image" id="image">
-                <input class="prix" placeholder="Prix d'achat : <%= produit.prix_achat/100 %>€">
-                <input class="prix" placeholder="Prix d'abonnement mensuel : <%= produit.prix_abonnement/100 %>€">
-                <textarea name="description" id="description" style="resize: vertical;" placeholder="Description du produit ..."></textarea>
+                <input type="number" name="prixAchat" id="prixAchat" class="prix" placeholder="Prix d'achat : <%= produit.prix_achat/100 %>€">
+                <input type="number" name="prixAbonnement" id="prixAbonnement" class="prix" placeholder="Prix d'abonnement mensuel : <%= produit.prix_abonnement/100 %>€">
+                <textarea name="description" id="description" style="resize: vertical;" placeholder="Description du produit : <%= produit.description %>"></textarea>
             </div>
             <div class="modif">
                 <a href="/admin/boutique">Annuler</a>
