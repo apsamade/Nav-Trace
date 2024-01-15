@@ -4,6 +4,9 @@ body{
 nav{
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
 }
+.login{
+    color: rgb(55, 92, 255);
+}
 header{
     min-height: 40vh;
     padding-top: 90px;

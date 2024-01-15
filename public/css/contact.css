@@ -4,6 +4,9 @@ body{
 nav{
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
 }
+nav ul li:nth-child(4) a{
+    color: rgb(55, 92, 255);
+}
 header{
     min-height: 80vh;
     display: flex;

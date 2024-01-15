@@ -70,6 +70,7 @@ main .descriptif form .info-prix{
     flex-basis: 325px;
     flex-grow: 1;
     padding: 12px;
+    font-size: 18px;
     border-radius: 6px;
     border: none;
     margin: 5px;
@@ -83,4 +84,39 @@ main .descriptif form button, main .descriptif form select{
 main .descriptif form .info-prix span:not(.prix){
     margin: 10px 0;
     display: block;
+}
+@media screen and (max-width: 1300px) {
+    body{
+        padding-top: 15px;
+    }
+    main{
+        width: 95%;
+    }
+    main .descriptif{
+        flex-direction: column-reverse;
+        min-width: 325px;
+        margin: 15px;
+        width: 90%;
+        max-width: 1200px;
+    }
+    main .images .principal-image{
+        padding: 5px;
+        width: 325px;
+        background-color: #9dcbff;
+    }
+    main .imgs{
+        display: flex;
+        width: calc(100% - 20px);
+        align-items: start;
+        justify-content: space-between;
+    }
+    main .imgs img{
+        width: 30%;
+        background-color: #9dcbff;
+        border-radius: 6px;
+        padding: 4px;
+    }
+    form div{
+        padding: 10px 0 !important;
+    }
 }
