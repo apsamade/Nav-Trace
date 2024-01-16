@@ -43,7 +43,7 @@
                     <option value="5">5</option>
                 </select>
                 <button class="info-prix" type="button">Acheter en 1 clic</button>
-                <div style="background-color: white; color: black; display: flex; flex-direction: column;" class="info-prix">
+                <div style="flex-basis: 100%; background-color: white; color: black; display: flex; flex-direction: column;" class="info-prix">
                     <span>Prix d'achat : 
                         <% if(produit.prix_achat/100 < 100){ %>
                             <span class="prix" style="color: green;"><%= produit.prix_achat/100 %>€</span>

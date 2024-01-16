@@ -9,7 +9,7 @@
         <li><a href="/contact">Contact</a></li>
     </ul>
     <ul>
-        <li class="panier">Panier <img src="/public/img/elements/panier_noir.png" alt="Panier d'article"><span style="color: green;" class="quantite-total"><%= panier.quantite_total %></span></li>
+        <li class="panier">Panier <img src="/public/img/elements/panier_noir.png" alt="Panier d'article"><span style="color: green;" class="quantite-total"><% if(typeof panier != 'undefined'){ %><%= panier.quantite_total %><% }else{ %>0<% } %></span></li>
         <li><a class="login" href="/account">Compte</a></li>
     </ul>
 </nav>
@@ -29,7 +29,7 @@
         <li><a href="/contact">Contact</a></li>
     </ul>
     <ul>
-        <li class="panier">Panier <img src="/public/img/elements/panier_noir.png" alt="Panier d'article"><span style="color: green;" class="quantite-total"><%= panier.quantite_total %></span></li>
+        <li class="panier">Panier <img src="/public/img/elements/panier_noir.png" alt="Panier d'article"><span style="color: green;" class="quantite-total"><% if(typeof panier != 'undefined'){ %><%= panier.quantite_total %><% }else{ %>0<% } %></span></li>
         <li><a class="login" href="/account">Compte</a></li>
     </ul>
 </aside>
