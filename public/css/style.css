@@ -119,6 +119,11 @@ nav .panier:hover{
     width: 30px;
     margin: 10px;
 }
+.quantite-total{
+    position: relative;
+    top: 10px;
+    right: 8px;
+}
 @media screen and (max-width: 1100px) {
     nav{
         display: none;

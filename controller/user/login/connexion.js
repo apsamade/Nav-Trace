@@ -7,6 +7,7 @@ exports.getConnexion = (req, res, next)=>{
 
 exports.postConnexion = async (req, res, next)=>{
     const {email, mdp} = req.body
+    const panier = req.session.panier
     const userExisting = await User.findOne({email: email})
     try {
         if(userExisting && bcrypt.compareSync(mdp, userExisting.mdp)){
@@ -15,10 +16,10 @@ exports.postConnexion = async (req, res, next)=>{
             res.redirect('/')
         }else{
             if(!userExisting){
-                return res.render('login/connexion', {error : 'Adresse Email non trouvée.'})
+                return res.render('login/connexion', {error : 'Adresse Email non trouvée.', panier})
             }
             if(!bcrypt.compareSync(mdp, userExisting.mdp)){
-                return res.render('login/connexion', {error : 'Mot de passe inccorect.'})
+                return res.render('login/connexion', {error : 'Mot de passe inccorect.', panier})
             }
         }
     } catch (error) {

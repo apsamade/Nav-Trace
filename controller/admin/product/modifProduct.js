@@ -5,10 +5,11 @@ const path = require('path')
 
 exports.getModifProduct = async (req, res, next) => {
     const user = req.session.user
+    const panier = req.session.panier
     const productId = req.params.id
     const produit = await Product.findById(productId)
     if (user && user.admin) {
-        res.render('admin/product/modifProduct', { user, produit })
+        res.render('admin/product/modifProduct', { user, produit, panier })
     } else {
         res.redirect('/')
     }
@@ -16,6 +17,7 @@ exports.getModifProduct = async (req, res, next) => {
 
 exports.postModifProduct = async (req, res, next) => {
     const user = req.session.user
+    const panier = req.session.panier
     const productId = req.params.id
     const { name, description, prixAchat, prixAbonnement } = req.body
     try {
@@ -80,7 +82,7 @@ exports.postModifProduct = async (req, res, next) => {
         }
         if (user && user.admin && (req.files || name || description || prixAbonnement || prixAchat)) {
             const produit = await Product.findById(productId)
-            return res.render('admin/product/modifProduct', { user, produit, message: 'Produit modifié avec succès !' })
+            return res.render('admin/product/modifProduct', { user, produit, message: 'Produit modifié avec succès !', panier })
         } else {
             res.redirect('/')
         }

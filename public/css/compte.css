@@ -28,6 +28,35 @@ header h1{
     font-size: 3.5rem;
     margin: 0 25px;
 }
+.account{
+    width: 40%;
+    min-width: 325px;
+    margin: 15px auto;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #202020;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+.account h3{
+    color: white;
+    font-size: 1.5rem;
+    margin: 15px 5px;
+}
+.account a{
+    margin: 10px;
+    min-width: 250px;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    transition: color 0.3s, background-color 0.3s;
+}
+.account a:hover{
+    background-color: white;
+    color: black;
+}
 form{
     width: 40%;
     min-width: 325px;

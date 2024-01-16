@@ -14,18 +14,19 @@ const panierSchema = new mongoose.Schema({
             },
             quantite: {
                 type: Number,
-                required: true
             }            
         }
-
     ],
     prix: {
         type: Number,
         required: true
     },
+    quantite_total: {
+        type: Number,
+        required: true
+    },
     payer: {
         type: Boolean,
-        required: true
     },
     nom: {
         type: String

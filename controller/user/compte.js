@@ -1,7 +1,8 @@
 exports.getCompte = async (req, res, next)=>{
     const user = req.session.user
+    const panier = req.session.panier
     if(user){
-        res.render('compte', { user })
+        res.render('compte', { user, panier })
     }else{
         res.redirect('/connexion')
     }
