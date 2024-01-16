@@ -17,17 +17,14 @@ exports.postProduct = async (req, res, next) => {
     const produit = await Product.findById(productId)
     try {
         const panier = new Panier({
-            products: [
-                {
-                    product_id: produit._id
-                },
-                {
-                    quantite: quantite
-                }
-            ],
+            products: [],
             prix: produit.prix_achat,
             quantite_total: quantite
         })
+        panier.products.push({
+            product_id: productId,
+            quantite: quantite,
+        });
         if(user){panier.user_id = user._id}
         await panier.save()
         req.session.panier = panier;
