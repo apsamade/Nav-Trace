@@ -9,12 +9,10 @@ exports.getCompte = async (req, res, next)=>{
 }
 
 exports.postCompte = (req, res, next)=>{
-    req.session.destroy((err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('session detruite')
-            res.redirect('/connexion');
-        }
-    });
+    delete req.session.user;
+    delete req.session.panier;
+
+    console.log('session utilisateur supprimée');
+    res.redirect('/connexion');
+
 }

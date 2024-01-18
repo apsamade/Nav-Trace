@@ -1,4 +1,5 @@
 const User = require('../../../models/user')
+const Panier = require('../../../models/panier')
 
 exports.getInscription = (req, res, next)=>{
     res.render('login/inscription')
@@ -23,6 +24,14 @@ exports.postInscription = async (req, res, next)=>{
                     user.admin = undefined;
                 }
                 await user.save()
+                if(panier && !panier.user_id){
+                    panier.user_id = user._id
+                    await Panier.findByIdAndUpdate(panier._id, {
+                        $set: {
+                            user_id: user._id
+                        }
+                    })
+                }
                 console.log('user créer avec succes ! ', user.email) 
                 req.session.user = user;
                 res.redirect('/') 

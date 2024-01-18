@@ -3,7 +3,8 @@ const Panier = require('../../../models/panier')
 const bcrypt = require('bcrypt')
 
 exports.getConnexion = (req, res, next)=>{
-    res.render('login/connexion')
+    const panier = req.session.panier
+    res.render('login/connexion', {panier})
 }
 
 exports.postConnexion = async (req, res, next)=>{
@@ -13,10 +14,16 @@ exports.postConnexion = async (req, res, next)=>{
     try {
         if(userExisting && bcrypt.compareSync(mdp, userExisting.mdp)){
             const monPanier = await Panier.findOne({user_id: userExisting._id})
-            if(monPanier){
+            if(panier){
+                req.session.panier = panier;
+                panier.user_id = userExisting._id;
+                await Panier.findByIdAndUpdate(panier._id, {
+                    $set: {
+                        user_id: userExisting._id
+                    }
+                })
+            }else if(monPanier){
                 req.session.panier = monPanier                
-            }else if(panier){
-                req.session.panier = panier
             }
             req.session.user = userExisting
 
