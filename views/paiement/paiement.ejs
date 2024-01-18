@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Trace | Paiement</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/compte.css">
+    <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/public/js/checkout.js" defer></script>
+</head>
+<body>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('../partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('../partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('../partials/nav') %>
+    <% } %>
+    <header>
+        <h1>Paiement</h1>
+        <%= user.email %>
+    </header>
+    <div id="checkout">
+        <!-- Checkout will insert the payment form here -->
+    </div>
+</body>
+</html>

@@ -16,6 +16,8 @@ const produitController = require('../controller/user/boutique/produit')
 const compteController = require('../controller/user/compte/compte')
 const panierController = require('../controller/user/compte/panier')
 
+const paiementController = require('../controller/user/paiement/paiement')
+
 router.get('/', homeController.getHome)
 router.post('/', homeController.postHome)
 
@@ -39,6 +41,9 @@ router.post('/account', compteController.postCompte)
 
 router.get('/panier', panierController.getPanier)
 router.post('/panier', panierController.postPanier)
+
+router.get('/panier/:id/paiement', paiementController.getPayement)
+router.post('/panier/:id/paiement', paiementController.postPayement)
 
 router.get('/contact', contactController.getContact)
 router.post('/contact', contactController.postContact)
