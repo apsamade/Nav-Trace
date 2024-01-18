@@ -1,0 +1,158 @@
+nav{
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+}
+header{
+    min-height: 40vh;
+    padding-top: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+header h1{
+    text-transform: capitalize;
+    font-family: 'Lexend', sans-serif;
+    letter-spacing: -2px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    position: relative;
+    bottom: 8vh;
+    z-index: 1;
+    text-align: center;
+    font-size: 3.5rem;
+    margin: 0 25px;
+}
+.account{
+    width: 65%;
+    max-width: 1000px;
+    min-width: 325px;
+    margin: 15px auto;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #202020;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    color: white;
+}
+.account h3{
+    color: white;
+    font-size: 1.5rem;
+    margin: 15px 5px;
+}
+.account a{
+    margin: 10px;
+    min-width: 250px;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    transition: color 0.3s, background-color 0.3s;
+}
+.account a:hover{
+    background-color: white;
+    color: black;
+}
+hr{
+    width: 95%; 
+    display: block; 
+    margin: 20px auto;
+}
+.produit{
+    width: 100%;
+}
+.produit .info{
+    display: flex;
+    align-items: start;
+}
+.produit .info h4{
+    margin: 15px 30px;
+}
+.produit img{
+    width: 150px;
+}
+.produit .quantite{
+    text-align: right;
+}
+header a{
+    text-align: center;
+    display: block;
+    margin: 15px auto;
+}
+.error{
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+.info-side{
+    margin-left: auto;
+    margin-right: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    min-height: 19vh;
+    justify-content: space-between;
+}
+form button[type=submit]{
+    background-color: white;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+    padding: 0;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+form button[type=submit]:hover{
+    background-color: rgb(255, 0, 0);
+}
+form button[type=submit] img{
+    width: 50px;
+    padding: 4px;
+}
+.quantite-prod{
+    margin-top: auto;
+}
+.paid{
+    margin: 15px auto 50px;
+    display: block;
+    padding: 12px;
+    width: 65%;
+    max-width: 1000px;
+    min-width: 325px;
+    background-color: rgb(60, 96, 255);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s;
+}
+.paid:hover{
+    background-color: black;
+}
+
+@media screen and (max-width: 1100px) {
+    .bckg{
+        display: none;
+    }
+    header h1{
+        font-size: 2.5rem;
+        bottom: 0;
+    }
+    .account{
+        width: 80%;        
+    }
+    .paid{
+        width: 80%;
+    }
+    .produit .info{
+        flex-wrap: wrap;
+    }
+    .produit .info h4{
+        margin: 5px;
+    }
+    .produit img{
+        width: 125px;
+    }
+}

@@ -14,10 +14,13 @@ const panierSchema = new mongoose.Schema({
             },
             quantite: {
                 type: Number,
-            }            
+            },   
+            prix: {
+                type: Number
+            }       
         }
     ],
-    prix: {
+    prix_total: {
         type: Number,
         required: true
     },

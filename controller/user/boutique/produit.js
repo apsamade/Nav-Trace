@@ -19,18 +19,21 @@ exports.postProduct = async (req, res, next) => {
         if (req.session.panier) {
             const panier = req.session.panier
             let totalQuantite = panier.quantite_total + parseInt(quantite);
-            let totalPrix = panier.prix + produit.prix_achat * quantite
+            let totalPrix = panier.prix_total + produit.prix_achat * parseInt(quantite)
+            let prixProduit = produit.prix_achat * parseInt(quantite)
             console.log('quantite total actuelle ', totalQuantite)
+            console.log('prix total actuelle ', totalPrix)
             await Panier.findByIdAndUpdate(panier._id, {
                 $addToSet: {
                     products:{
                         product_id: productId,
-                        quantite: quantite
+                        quantite: quantite,
+                        prix: prixProduit
                     }
                 },
                 $set: {
                     quantite_total: totalQuantite,
-                    prix: totalPrix
+                    prix_total: totalPrix
                 }
             })
             if (user) { 
@@ -40,25 +43,25 @@ exports.postProduct = async (req, res, next) => {
                     }
                 })
             }
-            panier.products.push({
-                product_id: productId,
-                quantite: quantite,
-            });
-            panier.quantite_total = totalQuantite;
-            panier.prix = totalPrix;
+            let newPanier = await Panier.findById(panier._id);
+            panier.products = newPanier.products;
+            panier.quantite_total = newPanier.quantite_total;
+            panier.prix_total = newPanier.prix_total;
             if (user && panier.user_id != 'undefined') { panier.user_id = user._id }
             console.log('session shopping continue : ', req.session.panier)
-            console.log('prix du panier : ', panier.prix/100, '€')
+            console.log('prix du panier : ', panier.prix_total/100, '€')
             res.render('boutique/product', { user, produit, panier })
         } else {
+            let prixProduit = produit.prix_achat * parseInt(quantite)
             const panier = new Panier({
                 products: [],
-                prix: produit.prix_achat * quantite,
-                quantite_total: quantite
+                prix_total: produit.prix_achat * quantite,
+                quantite_total: quantite,
             })
             panier.products.push({
                 product_id: productId,
                 quantite: quantite,
+                prix: prixProduit
             });
             if (user) { panier.user_id = user._id }
             await panier.save()
@@ -73,7 +76,3 @@ exports.postProduct = async (req, res, next) => {
         console.log(error)
     }
 }
-
-// implementer une logique qui dis que si un panier est deja existant alors ca modifie sinon ca créer
-// if (req.session.panier){ok on modifie}else{on créer}
-// possibilité de stocker les panier sous cookie ? a verifier 

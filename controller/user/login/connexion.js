@@ -1,4 +1,5 @@
 const User = require('../../../models/user')
+const Panier = require('../../../models/panier')
 const bcrypt = require('bcrypt')
 
 exports.getConnexion = (req, res, next)=>{
@@ -11,7 +12,14 @@ exports.postConnexion = async (req, res, next)=>{
     const userExisting = await User.findOne({email: email})
     try {
         if(userExisting && bcrypt.compareSync(mdp, userExisting.mdp)){
+            const monPanier = await Panier.findOne({user_id: userExisting._id})
+            if(monPanier){
+                req.session.panier = monPanier                
+            }else if(panier){
+                req.session.panier = panier
+            }
             req.session.user = userExisting
+
             console.log(req.session.user)
             res.redirect('/')
         }else{

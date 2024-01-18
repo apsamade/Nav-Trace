@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Trace | Panier</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/panier.css">
+    <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
+</head>
+<body>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('../partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('../partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('../partials/nav') %>
+    <% } %>
+        <header>
+            <h1>Mon Panier</h1>
+            <% if(user){ %>
+                <%= user.email %>
+            <% } %>
+        </header>
+        <section class="account">
+            <% if(panier && panier.products.length >= 1){ %>
+                <h3>Panier <span style="position: relative; top: 15px; font-weight: 300; font-size: 1.4rem;"><%= panier.prix_total/100 %>€</span></h3>
+                <% panier.products.forEach(panierProduit => { %>
+                    <div class="produit">
+                        <hr>
+                        <% produits.forEach(produit => { %>
+                            <% if (panierProduit.product_id == produit._id) { %>
+                                <div class="info">
+                                    <img src="<%= produit.image %>" alt="<%= produit.name %>">
+                                    <h4><%= produit.name %></h4>
+                                    <div class="info-side">
+                                        <form method="post">
+                                            <input type="hidden" name="panierProductId" value="<%= panierProduit._id %>">
+                                            <button type="submit"><img src="/public/img/elements/poubelle.png" alt=""></button>
+                                        </form>
+                                        <span class="quantite-prod">Prix : <%= panierProduit.prix/100 %>€</span>              
+                                        <span class="quantite-prod">Quantité : <%= panierProduit.quantite %></span>                                        
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% }) %>
+                    </div>
+                <% }) %>
+                <div class="produit">
+                    <hr>
+                    <h4 style="text-align: center; margin: 30px auto;" class="quantite">Quantité Total : <%= panier.quantite_total %></h4>
+                    <h4 style="text-align: center; margin: 30px auto;" class="quantite">Prix Total : <%= panier.prix_total/100 %>€</h4>
+                </div>
+            <% }else{ %>
+                <h3>Panier</h3>
+                <hr>
+                <span>Panier Vide</span>
+            <% } %>
+        </section>
+        <% if(panier && panier.products){ %>
+            <a class="paid" href="/paiement/panier/<%= panier._id %>">Payer</a>
+        <% } %>
+    </body>
+</html>
