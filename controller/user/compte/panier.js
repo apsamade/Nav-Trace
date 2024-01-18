@@ -12,7 +12,7 @@ exports.getPanier = async (req, res, next) => {
 exports.postPanier = async (req, res, next) => {
     const user = req.session.user
     const panier = req.session.panier
-    const { panierProductId } = req.body
+    const { panierProductId, inscription } = req.body
     const produits = await Product.find()
 
     let panierFiltrer = panier.products.filter(product => product._id !== panierProductId);
@@ -42,9 +42,8 @@ exports.postPanier = async (req, res, next) => {
     panier.quantite_total = newPanier.quantite_total;
     panier.prix_total = newPanier.prix_total;
     console.log('mon panier : ', panierFiltrer)
+
+    // renvoie vers inscription avec cookie pour rediriger vers le paiement
+
     res.render('compte/panier', { user, panier, produits })
-
 }
-
-// faire l'algo pour avoir la quantite total exact
-// faire l'algo pour avoir le prix total (appellez la constante produit en resortir les (prix / hashtag) * (quantite / produit))

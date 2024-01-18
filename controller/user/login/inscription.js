@@ -34,7 +34,12 @@ exports.postInscription = async (req, res, next)=>{
                 }
                 console.log('user créer avec succes ! ', user.email) 
                 req.session.user = user;
-                res.redirect('/') 
+                if(req.query.passer_commande === 'true'){
+                    res.redirect('/paiement');
+                }else{
+                    res.redirect('/') 
+                }
+
             }else{
                 res.render('login/inscription', {error: 'Mot de passe de confirmation différent.', panier})
             }
