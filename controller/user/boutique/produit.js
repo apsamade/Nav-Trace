@@ -50,7 +50,7 @@ exports.postProduct = async (req, res, next) => {
             if (user && panier.user_id != 'undefined') { panier.user_id = user._id }
             console.log('session shopping continue : ', req.session.panier)
             console.log('prix du panier : ', panier.prix_total/100, '€')
-            res.render('boutique/product', { user, produit, panier })
+            res.render('boutique/product', { user, produit, panier, message: 'Produit ajouté à votre panier !' })
         } else {
             let prixProduit = produit.prix_achat * parseInt(quantite)
             const panier = new Panier({

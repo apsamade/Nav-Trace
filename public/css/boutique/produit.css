@@ -85,6 +85,15 @@ main .descriptif form .info-prix span:not(.prix){
     margin: 10px 0;
     display: block;
 }
+.message{
+    margin: 0 20px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    background: hsl(208, 100%, 50%);
+    color: white;
+    animation: disparition 0.8s 5s ease forwards;
+}
 @media screen and (max-width: 1300px) {
     body{
         padding-top: 90px;
@@ -123,5 +132,11 @@ main .descriptif form .info-prix span:not(.prix){
 @media screen and (max-width: 1100px) {
     body{
         padding-top: 15px;
+    }
+}
+@keyframes disparition{
+    100%{
+        transform: translateY(-15px);
+        opacity: 0;
     }
 }

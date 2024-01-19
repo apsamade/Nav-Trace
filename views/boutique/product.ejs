@@ -42,7 +42,11 @@
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                <button class="info-prix" type="button">Acheter en 1 clic</button>
+                <% if(user){ %>
+                    <button class="info-prix" type="button">Acheter en 1 clic</button>
+                <% }else{ %>
+                    <a style="text-align: center; text-decoration: none;" class="info-prix" href="/inscription?passer_commande=true">Acheter en 1 clic</a>
+                <% } %>
                 <div style="flex-basis: 100%; background-color: white; color: black; display: flex; flex-direction: column;" class="info-prix">
                     <span>Prix d'achat : 
                         <% if(produit.prix_achat/100 < 100){ %>
@@ -58,6 +62,10 @@
                     </span>                  
                 </div>
             </form>
+            <% if(typeof message != 'undefined'){ %>
+                <div class="message"><%= message %></div>
+            <% } %>
+
         </section>     
     </main>
 
