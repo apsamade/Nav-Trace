@@ -34,8 +34,8 @@ exports.postInscription = async (req, res, next)=>{
                 }
                 console.log('user créer avec succes ! ', user.email) 
                 req.session.user = user;
-                if(req.query.passer_commande === 'true'){
-                    res.redirect('/paiement');
+                if(req.query.passer_commande === 'true' && panier){
+                    res.redirect(`/panier/${panier._id}/paiement`);
                 }else{
                     res.redirect('/') 
                 }

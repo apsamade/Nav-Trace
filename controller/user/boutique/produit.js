@@ -11,12 +11,12 @@ exports.getProduct = async (req, res, next) => {
 
 exports.postProduct = async (req, res, next) => {
     const user = req.session.user
-    const { quantite } = req.body
+    const { quantite, achatDirect, inscriptionRedirection } = req.body
     console.log(quantite)
     const productId = req.params.id
     const produit = await Product.findById(productId)
     try {
-        if (req.session.panier) {
+        if (req.session.panier && !achatDirect) {
             const panier = req.session.panier
             let totalQuantite = panier.quantite_total + parseInt(quantite);
             let totalPrix = panier.prix_total + produit.prix_achat * parseInt(quantite)
@@ -51,7 +51,7 @@ exports.postProduct = async (req, res, next) => {
             console.log('session shopping continue : ', req.session.panier)
             console.log('prix du panier : ', panier.prix_total/100, '€')
             res.render('boutique/product', { user, produit, panier, message: 'Produit ajouté à votre panier !' })
-        } else {
+        } else if(!req.session.panier && !achatDirect) {
             let prixProduit = produit.prix_achat * parseInt(quantite)
             const panier = new Panier({
                 products: [],
@@ -68,6 +68,27 @@ exports.postProduct = async (req, res, next) => {
             req.session.panier = panier;
             console.log('session shopping ouverte : ', req.session.panier)
             res.render('boutique/product', { user, produit, panier })
+        } else if(achatDirect) {
+            let prixProduit = produit.prix_achat * parseInt(quantite)
+            const panier = new Panier({
+                products: [],
+                prix_total: produit.prix_achat * quantite,
+                quantite_total: quantite,
+            })
+            panier.products.push({
+                product_id: productId,
+                quantite: quantite,
+                prix: prixProduit
+            });
+            if (user) { panier.user_id = user._id }
+            await panier.save()
+            req.session.panier = panier;
+            console.log('session shopping ouverte : ', req.session.panier)
+            if(user){
+                res.redirect(`/panier/${panier._id}/paiement`)                
+            }else{
+                res.redirect(`/inscription?passer_commande=true`)       
+            }
         }
 
     } catch (error) {
