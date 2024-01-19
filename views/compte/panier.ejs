@@ -65,6 +65,8 @@
             <a class="paid" href="/inscription?passer_commande=true">M'inscrire et Passer la commande</a>
         <% }else if(user && !panier){ %>
             <a class="paid" href="/boutique">Commencer mon shopping</a>
+        <% }else if(!user && !panier){ %>
+            <a class="paid" href="/boutique">Commencer mon shopping</a>
         <% } %>
     </body>
 </html>
