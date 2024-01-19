@@ -15,15 +15,15 @@ const fulfillOrder = async (lineItems) => {
     try {
         console.log('meta donné test drive webhook : ', lineItems.metadata)
         if (lineItems.metadata.panier_id) {
-            const thisPanier = await Panier.findById(lineItems.panier_id)
-            await Panier.findByIdAndUpdate(lineItems.panier_id, {
+            const thisPanier = await Panier.findById(lineItems.metadata.panier_id)
+            await Panier.findByIdAndUpdate(lineItems.metadata.panier_id, {
                 $set: {
                     payer: true,
                     politique_accepter: true,
                     paiement_stripe_id: lineItems.id
                 }
             })
-            console.log(await Panier.findById(lineItems.panier_id))
+            console.log(await Panier.findById(lineItems.metadata.panier_id))
     // Génération d'une facture
     //         const factureDir = path.join(__dirname, '..', '..', 'factures');
     //         const numeroFacture = reservationSessions.length;
