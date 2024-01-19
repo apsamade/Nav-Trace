@@ -45,6 +45,8 @@ exports.postPayement = async (req, res, next) => {
                 metadata: {
                     // meta data pour completer l'user complet
                     // email / tel / adresse etc ...
+                    user_id: thisPanier.user_id.toString(),
+                    panier_id: thisPanier._id.toString()
                 },
                 consent_collection: {
                     terms_of_service: 'required',

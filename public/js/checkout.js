@@ -2,7 +2,7 @@ const stripe = Stripe("pk_test_51K725CDsoYlRpW2rxHxWZvJcTokh7auXXM8mn4h8wbQBkU4p
 
 let elements;
 const currentPath = window.location.pathname;
-const idMatch = currentPath.match(/\/([a-fA-F0-9]{24})\/payement$/);
+const idMatch = currentPath.match(/\/([a-fA-F0-9]{24})\/paiement$/);
 const id = idMatch ? idMatch[1] : null;
 
 initialize();
