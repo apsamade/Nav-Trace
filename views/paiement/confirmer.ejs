@@ -24,7 +24,9 @@
         </header>
         <section class="account">
             <h3>Panier</h3>
-            <a href="/panier">Mes panier</a>
+            <% if(typeof erreur != 'undefined'){ %>
+                <div class="erreur"><%= erreur %></div>
+            <% } %>
         </section>
 </body>
 </html>
