@@ -11,12 +11,12 @@ exports.getProduct = async (req, res, next) => {
 
 exports.postProduct = async (req, res, next) => {
     const user = req.session.user
-    const { quantite, achatDirect, inscriptionRedirection } = req.body
+    const { quantite, achatDirect } = req.body
     console.log(quantite)
     const productId = req.params.id
     const produit = await Product.findById(productId)
     try {
-        if (req.session.panier && !achatDirect) {
+        if (req.session.panier && !req.session.panier.payer && !achatDirect) {
             const panier = req.session.panier
             let totalQuantite = panier.quantite_total + parseInt(quantite);
             let totalPrix = panier.prix_total + produit.prix_achat * parseInt(quantite)

@@ -59,9 +59,9 @@
                 <span>Panier Vide</span>
             <% } %>
         </section>
-        <% if(panier && panier.products && user){ %>
+        <% if(panier && panier.products && !panier.payer && user){ %>
             <a class="paid" href="/panier/<%= panier._id %>/paiement">Payer</a>
-        <% }else if(panier && panier.products && !user){ %>
+        <% }else if(panier && panier.products && !panier.payer && !user){ %>
             <a class="paid" href="/inscription?passer_commande=true">M'inscrire et Passer la commande</a>
         <% }else if(user && !panier){ %>
             <a class="paid" href="/boutique">Commencer mon shopping</a>

@@ -24,8 +24,12 @@
         <h1>Paiement</h1>
         <%= user.email %>
     </header>
-    <div id="checkout">
-        <!-- Checkout will insert the payment form here -->
-    </div>
+    <% if(thisPanier.payer){ %>
+        <h4>Panier déja payé !</h4>
+    <% }else{ %>
+        <div id="checkout">
+            <!-- Checkout will insert the payment form here -->
+        </div>
+    <% } %>
 </body>
 </html>
