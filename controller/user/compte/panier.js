@@ -12,7 +12,7 @@ exports.getPanier = async (req, res, next) => {
 exports.postPanier = async (req, res, next) => {
     const user = req.session.user
     const panier = req.session.panier
-    const { panierProductId, inscription } = req.body
+    const { panierProductId } = req.body
     const produits = await Product.find()
 
     let panierFiltrer = panier.products.filter(product => product._id !== panierProductId);

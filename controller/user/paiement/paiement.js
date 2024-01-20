@@ -19,8 +19,11 @@ exports.postPayement = async (req, res, next) => {
     const panier = req.session.panier;
     const panierId = req.params.id
     const thisPanier = await Panier.findById(panierId)
+    console.log('this panier : ', thisPanier)
+    console.log('panier session : ', panier)
     if (thisPanier.payer) {
         res.json({ alreadyPaid: thisPanier.payer });
+        console.log('panier payer !')
     } else {
         try {
             const product = await stripe.products.create({
