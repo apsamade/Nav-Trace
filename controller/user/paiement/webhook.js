@@ -29,7 +29,10 @@ const fulfillOrder = async (lineItems) => {
                     tel: lineItems.phone
                 }
             })
-            
+            console.log('email : ', lineItems.email, lineItems.shipping_details.email)
+            console.log('tel : ', lineItems.phone)
+            console.log('nom : ', lineItems.shipping_details.name, lineItems.name)
+
             console.log(await Panier.findById(lineItems.metadata.panier_id))
     // Génération d'une facture
     //         const factureDir = path.join(__dirname, '..', '..', 'factures');
