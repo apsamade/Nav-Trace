@@ -10,6 +10,7 @@ exports.getConfirmation = async (req, res, next)=>{
     console.log(session)
     if(panier){
         if(user && session.payment_status === 'paid' && session.consent.terms_of_service == 'accepted'){
+            delete req.session.panier
             res.render('paiement/confirmer', { user, panier })
         }else if(user && session.payment_status != 'paid'){
             res.render('paiement/confirmer', { user, panier, erreur : "Panier non payé !" })

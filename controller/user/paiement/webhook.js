@@ -290,8 +290,6 @@ const emailCustomerAboutFailedPayment = (session) => {
 exports.handleWebhook = async (req, res, next) => {
     const payload = req.body;
     const sig = req.headers['stripe-signature'];
-    const panier = req.session.panier
-    console.log('panier session bien ici !', panier)
 
     let event;
 
