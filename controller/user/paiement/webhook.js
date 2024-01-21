@@ -23,11 +23,13 @@ const fulfillOrder = async (lineItems) => {
                     paiement_stripe_id: lineItems.id,
                     ville: lineItems.shipping_details.address.city,
                     adresse_postale: lineItems.shipping_details.address.line1,
-                    code_postal: lineItems.shipping_details.address.postal_code
+                    code_postal: lineItems.shipping_details.address.postal_code,
+                    email: lineItems.email,
+                    nom: lineItems.name,
+                    phone: lineItems.phone
                 }
             })
             console.log(await Panier.findById(lineItems.metadata.panier_id))
-            console.log('panier session webhook : ', req.session.panier)
     // Génération d'une facture
     //         const factureDir = path.join(__dirname, '..', '..', 'factures');
     //         const numeroFacture = reservationSessions.length;
