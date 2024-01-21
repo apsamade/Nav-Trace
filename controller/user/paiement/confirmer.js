@@ -8,8 +8,7 @@ exports.getConfirmation = async (req, res, next)=>{
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     console.log(session)
     if(panier){
-        if(user && session.payment_status === 'paid' && session.consent.terms_of_service == 'accepted'){$
-
+        if(user && session.payment_status === 'paid' && session.consent.terms_of_service == 'accepted'){
             delete panier
             res.render('paiement/confirmer', { user, panier })
         }else if(user && session.payment_status != 'paid'){
