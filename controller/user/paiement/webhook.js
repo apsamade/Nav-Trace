@@ -14,7 +14,6 @@ const monMail = process.env.MONMAIL;
 const fulfillOrder = async (lineItems) => {
     try {
         console.log('meta donné test drive webhook : ', lineItems.metadata)
-        console.log('Json test drive webhook : ', lineItems.shipping_details)
         if (lineItems.metadata.panier_id) {
             await Panier.findByIdAndUpdate(lineItems.metadata.panier_id, {
                 $set: {
@@ -29,9 +28,6 @@ const fulfillOrder = async (lineItems) => {
                     tel: lineItems.customer_details.phone
                 }
             })
-            console.log('email : ', lineItems.email, lineItems.shipping_details.email)
-            console.log('tel : ', lineItems.customer_details.phone)
-            console.log('nom : ', lineItems.shipping_details.name, lineItems.name)
 
             console.log(await Panier.findById(lineItems.metadata.panier_id))
     // Génération d'une facture
@@ -294,6 +290,8 @@ const emailCustomerAboutFailedPayment = (session) => {
 exports.handleWebhook = async (req, res, next) => {
     const payload = req.body;
     const sig = req.headers['stripe-signature'];
+    const panier = req.session.panier
+    console.log('panier session bien ici !', panier._id)
 
     let event;
 
