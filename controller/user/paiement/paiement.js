@@ -8,7 +8,7 @@ exports.getPayement = async (req, res, next) => {
     const panierId = req.params.id
     const thisPanier = await Panier.findById(panierId)
     if(user){
-        res.render('paiement/paiement', { user, thisPanier })
+        res.render('paiement/paiement', { user, thisPanier, panier })
     }else{
         res.redirect('/connexion')
     }

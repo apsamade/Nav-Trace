@@ -2,7 +2,8 @@ const User = require('../../../models/user')
 const Panier = require('../../../models/panier')
 
 exports.getInscription = (req, res, next)=>{
-    res.render('login/inscription')
+    const panier = req.session.panier
+    res.render('login/inscription', {panier})
 }
 
 exports.postInscription = async (req, res, next)=>{
