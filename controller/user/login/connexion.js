@@ -13,8 +13,8 @@ exports.postConnexion = async (req, res, next)=>{
     const userExisting = await User.findOne({email: email})
     try {
         if(userExisting && bcrypt.compareSync(mdp, userExisting.mdp)){
-            const monPanier = await Panier.findOne({user_id: userExisting._id})
-            if(panier){
+            const monPanier = await Panier.findOne({user_id: userExisting._id, payer: false})
+            if(panier && !panier.payer){
                 req.session.panier = panier;
                 panier.user_id = userExisting._id;
                 await Panier.findByIdAndUpdate(panier._id, {
