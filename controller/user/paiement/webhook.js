@@ -14,6 +14,7 @@ const monMail = process.env.MONMAIL;
 const fulfillOrder = async (lineItems) => {
     try {
         console.log('meta donné test drive webhook : ', lineItems.metadata)
+        console.log('Json test drive webhook : ', lineItems)
         if (lineItems.metadata.panier_id) {
             await Panier.findByIdAndUpdate(lineItems.metadata.panier_id, {
                 $set: {
