@@ -41,7 +41,7 @@ const panierSchema = new mongoose.Schema({
         type: String
     },
     tel: {
-        type: Number
+        type: String
     },
     ville: {
         type: String
