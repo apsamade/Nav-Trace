@@ -5,6 +5,7 @@ exports.getConfirmation = async (req, res, next)=>{
     const panier = req.session.panier
     const thisPanier = await Panier.findById(panier._id)
     const session = await stripe.checkout.sessions.retrieve(panier.paiement_stripe_id);
+    console.log(session)
     if(panier){
         if(user && session.payment_status === 'paid' && session.consent.terms_of_service == 'accepted'){
             res.render('paiement/confirmer', { user, panier })
