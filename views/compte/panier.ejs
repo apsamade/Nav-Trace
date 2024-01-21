@@ -63,9 +63,9 @@
             <!-- panier payer ! avec un forEach -->
             <h3>Panier Payé</h3>
         </section>
-        <% if(panier && panier.products && !panier.payer && user){ %>
+        <% if(panier && panier.products.length >= 1 && !panier.payer && user){ %>
             <a class="paid" href="/panier/<%= panier._id %>/paiement">Payer</a>
-        <% }else if(panier && panier.products && !panier.payer && !user){ %>
+        <% }else if(panier && panier.products.length >= 1 && !panier.payer && !user){ %>
             <a class="paid" href="/inscription?passer_commande=true">M'inscrire et Passer la commande</a>
         <% }else if(user && !panier){ %>
             <a class="paid" href="/boutique">Commencer mon shopping</a>
