@@ -4,7 +4,6 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 exports.getConfirmation = async (req, res, next)=>{
     const user = req.session.user
     const panier = req.session.panier
-    const thisPanier = await Panier.findById(panier._id)
     const sessionId = req.query.session_id
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     console.log(session)
