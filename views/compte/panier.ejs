@@ -61,6 +61,7 @@
         </section>
         <section class="account">
             <!-- panier payer ! avec un forEach -->
+            <h3>Panier Payé</h3>
         </section>
         <% if(panier && panier.products && !panier.payer && user){ %>
             <a class="paid" href="/panier/<%= panier._id %>/paiement">Payer</a>
