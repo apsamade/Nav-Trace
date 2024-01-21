@@ -26,11 +26,11 @@ const fulfillOrder = async (lineItems) => {
                     code_postal: lineItems.shipping_details.address.postal_code,
                     email: lineItems.email,
                     nom: lineItems.shipping_details.name,
-                    tel: lineItems.phone
+                    tel: lineItems.customer_details.phone
                 }
             })
             console.log('email : ', lineItems.email, lineItems.shipping_details.email)
-            console.log('tel : ', lineItems.phone)
+            console.log('tel : ', lineItems.customer_details.phone)
             console.log('nom : ', lineItems.shipping_details.name, lineItems.name)
 
             console.log(await Panier.findById(lineItems.metadata.panier_id))
