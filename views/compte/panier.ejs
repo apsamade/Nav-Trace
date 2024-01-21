@@ -25,7 +25,7 @@
             <% } %>
         </header>
         <section class="account">
-            <% if(panier && panier.products.length >= 1){ %>
+            <% if(panier && !panier.payer && panier.products.length >= 1){ %>
                 <h3>Panier <span style="position: relative; top: 15px; font-weight: 300; font-size: 1.4rem;"><%= panier.prix_total/100 %>€</span></h3>
                 <% panier.products.forEach(panierProduit => { %>
                     <div class="produit">
@@ -58,6 +58,9 @@
                 <hr>
                 <span>Panier Vide</span>
             <% } %>
+        </section>
+        <section class="account">
+            <!-- panier payer ! avec un forEach -->
         </section>
         <% if(panier && panier.products && !panier.payer && user){ %>
             <a class="paid" href="/panier/<%= panier._id %>/paiement">Payer</a>
