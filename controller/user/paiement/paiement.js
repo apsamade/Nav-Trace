@@ -52,6 +52,9 @@ exports.postPayement = async (req, res, next) => {
                     user_id: thisPanier.user_id.toString(),
                     panier_id: thisPanier._id.toString()
                 },
+                phone_number_collection: {
+                    enabled: true,
+                },
                 consent_collection: {
                     terms_of_service: 'required',
                 },
