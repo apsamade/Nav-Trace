@@ -1,5 +1,5 @@
 const Panier = require('../../../models/panier')
-const stripe = require('stripe')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 exports.getConfirmation = async (req, res, next)=>{
     const user = req.session.user
