@@ -21,6 +21,7 @@ nav{
     justify-content: space-between;
     border-radius: 0 0 6px 6px;
     z-index: 15;
+    background-color: #001a77;
 }
 nav ul{
     display: flex;

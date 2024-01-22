@@ -9,7 +9,6 @@ window.addEventListener('scroll', function () {
         navbar.classList.add('navbar-appear');
     } else {
         navbar.style.position = 'absolute';
-        navbar.style.backgroundColor = 'transparent';
         navbar.style.boxShadow = '2px 0 4px 0 rgba(0, 0, 0, 0)'
         navbar.classList.remove('navbar-appear');
     }

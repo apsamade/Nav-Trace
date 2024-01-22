@@ -63,9 +63,9 @@
             <a class="paid" href="/panier/<%= panier._id %>/paiement">Payer</a>
         <% }else if(panier && panier.products.length >= 1 && !panier.payer && !user){ %>
             <a class="paid" href="/inscription?passer_commande=true">M'inscrire et Passer la commande</a>
-        <% }else if(user && panier.products.length <= 0 ){ %>
+        <% }else if(user && (!panier || panier.products.length <= 0)){ %>
             <a class="paid" href="/boutique">Commencer mon shopping</a>
-        <% }else if(!user && panier.products.length <= 0 ){ %>
+        <% }else if(!user && (!panier || panier.products.length <= 0)){ %>
             <a class="paid" href="/boutique">Commencer mon shopping</a>
         <% } %>
     </body>

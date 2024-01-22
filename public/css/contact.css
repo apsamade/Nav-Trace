@@ -29,14 +29,14 @@ main{
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 90px;
+    margin-top: 80px;
 }
 .bckg{
     background-image: url(/public/img/background/background_pink_porsch_pink.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 70%;
-    min-height: 90.5vh;
+    min-height: 100vh;
     transform: scaleX(-1);
 }
 header, .bckg{

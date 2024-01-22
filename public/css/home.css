@@ -1,3 +1,6 @@
+nav{
+    background-color: transparent;
+}
 header{
     background-image: url(/public/img/background/background_header_products.webp);
     background-size: cover;
@@ -55,6 +58,9 @@ header .container a:hover{
 }
 .line-products{
     margin: 70px 0;
+    background-image: url(/public/img/background/background_home.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .line-products h2{
     text-transform: capitalize;
@@ -143,5 +149,8 @@ footer p{
         padding: 12px 16px;
         margin: 0 auto 25px;
         font-size: 1.2rem;
+    }
+    .line-products h2{
+        font-size: 2rem;
     }
 }
