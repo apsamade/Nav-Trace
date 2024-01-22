@@ -233,6 +233,9 @@ footer{
 /* Ajouter une classe pour l'animation d'apparition */
 .navbar-appear {
     opacity: 0;
+    background-color: #001a77;
+    box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.4);
+    position: fixed;
     animation: fadeIn 0.5s forwards;
 }
 

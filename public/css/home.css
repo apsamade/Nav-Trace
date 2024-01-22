@@ -57,8 +57,8 @@ header .container a:hover{
     color: white;
 }
 .line-products{
-    margin: 70px 0;
-    background-image: url(/public/img/background/background_home.png);
+    margin: 0;
+    background-image: url(/public/img/background/bg-wave.webp);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -71,9 +71,9 @@ header .container a:hover{
     text-align: center;
     font-size: 3rem;
     font-weight: 600;
-    margin: 15px 0 50px;
+    margin: 0px 0 50px;
     text-transform: uppercase;
-    padding: 50px 0 0;
+    padding: 100px 0 0;
 }
 .line-products .produits{
     display: flex;
@@ -88,7 +88,7 @@ header .container a:hover{
     flex-basis: 38%;
     border-radius: 6px;
     flex-grow: 1;
-    margin: 10px;
+    margin: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
