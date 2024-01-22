@@ -81,7 +81,7 @@ header .container a:hover{
     align-items: center;
     justify-content: center;
     width: 68%;
-    min-width: calc(345px + 20px);
+    min-width: calc(345px);
     margin: 15px auto;
 }
 .line-products .produits div{
@@ -131,6 +131,9 @@ footer p{
     header{
         padding-top: 4vh;
     }
+    header .container {
+        margin: 35px auto;
+    }
     header .container h1{
         font-size: 2.2rem;
         width: 90%;
@@ -146,9 +149,11 @@ footer p{
         text-shadow: 1px 1px 1px black;
     }
     header .container a{
-        padding: 12px 16px;
-        margin: 0 auto 25px;
+        padding: 12px 0;
+        width: 100%;
+        margin: 5px 5px 25px;
         font-size: 1.2rem;
+        text-align: center;
     }
     .line-products h2{
         font-size: 2rem;
