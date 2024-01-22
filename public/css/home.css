@@ -65,6 +65,7 @@ header .container a:hover{
     text-align: center;
     font-size: 3rem;
     font-weight: 600;
+    margin: 15px 0 50px;
     text-transform: uppercase;
     padding: 50px 0 0;
 }
@@ -73,13 +74,14 @@ header .container a:hover{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 68%;
     min-width: calc(345px + 20px);
     margin: 15px auto;
 }
 .line-products .produits div{
     flex-basis: 38%;
     border-radius: 6px;
+    flex-grow: 1;
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -115,16 +117,31 @@ header .container a:hover{
 .line-products .produits div img{
     width: 100%;
 }
-
+footer p{
+    margin: 15px;
+    text-align: center;
+}
 @media screen and (max-width: 1100px) {
     header{
         padding-top: 4vh;
     }
-    header h1{
+    header .container h1{
         font-size: 2.2rem;
         width: 90%;
         text-align: center;
         margin: auto;
         padding: 50px 0 0;
+    }
+    header .container p{
+        padding: 15px 20px;
+        margin: 25px auto;
+        text-align: center;
+        font-size: 1.2rem;
+        text-shadow: 1px 1px 1px black;
+    }
+    header .container a{
+        padding: 12px 16px;
+        margin: 0 auto 25px;
+        font-size: 1.2rem;
     }
 }
