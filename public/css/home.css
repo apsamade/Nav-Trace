@@ -1,33 +1,121 @@
 header{
-    position: relative;
-    background-image: url(/public/img/background/background_white_4x4_black.jpg);
+    background-image: url(/public/img/background/background_header_products.webp);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
     min-height: 80vh;
     padding-top: 10.2vh;
 }
-header::before{
-    content: '';
-    background-color: rgba(0, 0, 0, 0);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+header .container{
+    max-width: 700px;
+    margin: 0px 25px 0 6%;
 }
-header h1{
+header .container h1{
     text-transform: capitalize;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Oswald', sans-serif;
     letter-spacing: -2px;
     font-weight: bold;
-    color: rgb(0, 0, 0);
-    position: relative;
-    z-index: 1;
+    color: rgb(255, 255, 255);
     font-size: 4rem;
-    margin: 0px 25px 0 6%;
+    font-weight: 600;
+    text-transform: uppercase;
     padding: 50px 0 0;
 }
+header .container p{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    padding: 50px 0 0;
+    line-height: 150%;
+    font-weight: 200;
+}
+header .container .btns{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+header .container a{
+    padding: 15px 24px;
+    border-radius: 6px;
+    margin: 25px 12px 0 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    background-color: white;
+    color: rgb(0, 9, 131);
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    transition: color 0.3s, background-color 0.3s;
+}
+header .container a:hover{
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+.line-products{
+    margin: 70px 0;
+}
+.line-products h2{
+    text-transform: capitalize;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: -2px;
+    font-weight: bold;
+    color: rgb(0, 9, 131);
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 50px 0 0;
+}
+.line-products .produits{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    min-width: calc(345px + 20px);
+    margin: 15px auto;
+}
+.line-products .produits div{
+    flex-basis: 38%;
+    border-radius: 6px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(241, 242, 244, 1);
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.line-products .produits div:hover{
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.5);
+    transform: scale(1.02);
+}
+.line-products .produits div h3{
+    text-align: center;
+    margin: 15px;
+    font-size: 1.55rem;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+}
+.line-products .produits div p{
+    width: 80%;
+    min-width: 325px;
+    font-weight: 300;
+    margin: 15px auto;
+    text-align: center;
+    line-height: 150%;
+}
+.line-products .produits div a{
+    display: block;
+    margin: 15px auto;
+    text-decoration: none;
+}
+.line-products .produits div img{
+    width: 100%;
+}
+
 @media screen and (max-width: 1100px) {
     header{
         padding-top: 4vh;
