@@ -2,6 +2,7 @@ const stripe = require('stripe')(process.env.SECRET_KEY_STRIPE);
 const endpointSecret = process.env.STRIPE_SECRET_WEBHOOK_KEY;
 
 const Panier = require('../../../models/panier')
+const Product = require('../../../models/product')
 
 const PDFDocument = require('pdfkit');
 const fs = require('fs')
@@ -32,6 +33,7 @@ const fulfillOrder = async (lineItems) => {
             console.log(await Panier.findById(lineItems.metadata.panier_id))
 //    Génération d'une facture
             const paniers = await Panier.find({payer: true})
+            const produits = await Product.find()
             const thisPanier = await Panier.findById(lineItems.metadata.panier_id)
             const factureDir = path.join(__dirname, '..', '..', '..', 'factures');
             const numeroFacture = paniers.length;
@@ -89,8 +91,10 @@ const fulfillOrder = async (lineItems) => {
 
             const items = [];
             thisPanier.products.forEach(article =>{
+                let produitCorrespondant = produits.find(prod => prod._id === article.product_id);
                 items.push({
                     id: article.product_id,
+                    nom: produitCorrespondant.nom,
                     quantite: article.quantite,
                     prix: article.prix
                 })
@@ -122,7 +126,6 @@ const fulfillOrder = async (lineItems) => {
                 const year = date.getFullYear().toString();
                 return `${day}/${month}/${year}`;
             }
-            let acompte = '50%';
             for (const item of items) {
                 doc.font('Helvetica')
                     .fontSize(10)
