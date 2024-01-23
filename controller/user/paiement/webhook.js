@@ -138,7 +138,7 @@ const fulfillOrder = async (lineItems) => {
                     .text(`${item.nom}`, col2, yPos, { width: 225, continued: true })
                     .text(item.quantite.toString(), col5, yPos, { width: 0, continued: true })
                     .text(`${item.tva.toString()}%`, col6, yPos, { width: 0, continued: true })
-                    .text(`${((thisPanier.prix / 100) - (((thisPanier.prix / 100) * items[0].tva) / 100)).toFixed(2)} €`, col7, yPos, { width: 0, continued: true });
+                    .text(`${((item.prix / 100) - (((item.prix / 100) * items[0].tva) / 100)).toFixed(2)} €`, col7, yPos, { width: 0, continued: true });
 
                 // Dessiner des lignes horizontales entre les lignes du tableau
                 doc.moveTo(col1 - 15, yPos + 45)
