@@ -89,20 +89,20 @@ const fulfillOrder = async (lineItems) => {
             const col6 = 415;
             const col7 = 455;
 
-            let ref = '00' + 0;
+            let ref = 1;
             const items = [];
             thisPanier.products.forEach(article =>{
                 let produitCorrespondant = produits.filter(prod => prod._id == article.product_id);
                 console.log('items webhook map : ', produits.map(prod => prod._id))
                 console.log('items webhook prod correspondant : ', produitCorrespondant)
                 items.push({
-                    id: parseInt(ref + 1),
+                    id: '00'+ (ref),
                     nom: produitCorrespondant.name,
                     quantite: article.quantite,
                     prix: article.prix,
                     tva: '20',
                 })
-                ref += parseInt(1);
+                ref += 1;
             })
             console.log('items webhook : ', items)
             let yPos = tableTop;
@@ -141,33 +141,33 @@ const fulfillOrder = async (lineItems) => {
                     .text(`${((item.prix / 100) - (((item.prix / 100) * items[0].tva) / 100)).toFixed(2)} €`, col7, yPos, { width: 0, continued: true });
 
                 // Dessiner des lignes horizontales entre les lignes du tableau
-                doc.moveTo(col1 - 15, yPos + 45)
-                    .lineTo(col7, yPos + 45)
+                doc.moveTo(col1 - 15, yPos + 15)
+                    .lineTo(col7 + 80, yPos + 15)
                     .stroke();
 
                 // Dessiner des lignes verticales entre les colonnes du tableau
                 doc.moveTo(col1 - 15, yPos - 30)
-                    .lineTo(col1 - 15, yPos + 45)
+                    .lineTo(col1 - 15, yPos + 15)
                     .stroke();
 
                 doc.moveTo(col2 - 12, yPos - 30)
-                    .lineTo(col2 - 12, yPos + 45)
+                    .lineTo(col2 - 12, yPos + 15)
                     .stroke();
 
                 doc.moveTo(col5 - 5, yPos - 30)
-                    .lineTo(col5 - 5, yPos + 45)
+                    .lineTo(col5 - 5, yPos + 15)
                     .stroke();
 
                 doc.moveTo(col6 - 6, yPos - 30)
-                    .lineTo(col6 - 6, yPos + 45)
+                    .lineTo(col6 - 6, yPos + 15)
                     .stroke();
 
                 doc.moveTo(col7 - 8, yPos - 30)
-                    .lineTo(col7 - 8, yPos + 45)
+                    .lineTo(col7 - 8, yPos + 15)
                     .stroke();
 
                 doc.moveTo(col7 + 80, yPos - 30)
-                    .lineTo(col7 + 80, yPos + 45)
+                    .lineTo(col7 + 80, yPos + 15)
                     .stroke();
 
                 yPos += 20;
