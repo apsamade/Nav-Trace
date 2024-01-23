@@ -89,18 +89,20 @@ const fulfillOrder = async (lineItems) => {
             const col6 = 415;
             const col7 = 455;
 
+            let ref = '00' + 0;
             const items = [];
             thisPanier.products.forEach(article =>{
-                let produitCorrespondant = produits.filter(prod => prod._id == article.product_id);
+                let produitCorrespondant = produits.find(prod => prod._id == article.product_id);
                 console.log('items webhook : ', produits.map(prod => prod._id))
-                console.log('items webhook : ', article.product_id)
+                console.log('items webhook : ', produitCorrespondant)
                 items.push({
-                    id: article.product_id,
-                    nom: produitCorrespondant.nom,
+                    id: ref + 1,
+                    nom: produitCorrespondant.name,
                     quantite: article.quantite,
                     prix: article.prix,
                     tva: '20',
                 })
+                ref += 1;
             })
             console.log('items webhook : ', items)
             let yPos = tableTop;
@@ -168,7 +170,7 @@ const fulfillOrder = async (lineItems) => {
                     .lineTo(col7 + 80, yPos + 45)
                     .stroke();
 
-                yPos += 15;
+                yPos += 20;
 
             }
 
