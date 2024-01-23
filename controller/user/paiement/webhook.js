@@ -87,10 +87,15 @@ const fulfillOrder = async (lineItems) => {
             const col6 = 415;
             const col7 = 455;
 
-            const items = [
-                { reference: `REF00${numeroFacture}`, quantite: thisPanier.quantite_total, puVente: 50, remise: 0, tva: 20, montantHT: 200 },
-            ];
-
+            const items = [];
+            thisPanier.products.forEach(article =>{
+                items.push({
+                    id: article.product_id,
+                    quantite: article.quantite,
+                    prix: article.prix
+                })
+            })
+            console.log('items webhook : ', items)
             let yPos = tableTop;
             // Dessiner des lignes horizontales entre les lignes du tableau
             doc.moveTo(col1 - 15, yPos + -29)
