@@ -23,7 +23,7 @@ const fulfillOrder = async (lineItems) => {
                     ville: lineItems.shipping_details.address.city,
                     adresse_postale: lineItems.shipping_details.address.line1,
                     code_postal: lineItems.shipping_details.address.postal_code,
-                    email: lineItems.email,
+                    email: lineItems.customer_details.email,
                     nom: lineItems.shipping_details.name,
                     tel: lineItems.customer_details.phone
                 }
