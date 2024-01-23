@@ -43,7 +43,7 @@ const fulfillOrder = async (lineItems) => {
             const writeStream = fs.createWriteStream(filePath);
 
             doc.pipe(writeStream);
-            doc.image('public/img/logo/Nav-Trace_logo_noname.png', 5, 5, { width: 80 })
+            doc.image('public/img/logo/Nav-Trace_logo_noname.png', 5, 5, { width: 55 })
                 .moveDown(-1.7); // Ajuster l'espacement vertical
 
             // Titre de la facture
@@ -61,26 +61,12 @@ const fulfillOrder = async (lineItems) => {
                 .text('N°SIRET : 78981803600038', { align: 'left' })
                 .text('Capital : 20 000€', { align: 'left' });
 
-                function formaterNumeroTel(numero) {
-                    let numeroString = numero.toString(); // Convertir en chaîne de caractères
-                
-                    if (numeroString.startsWith("33")) {
-                        numeroString = `0${numeroString.slice(2)}`
-                        return `${numeroString.slice(0).replace(/(\d{2})/g, '$1 ')}`;
-                    }
-                    if (numeroString.startsWith("6") || numeroString.startsWith("7")) {
-                        numeroString = `0${numeroString}`
-                        return `${numeroString.slice(0).replace(/(\d{2})/g, '$1 ')}`;
-                    }
-                
-                    return numeroString; // Retourner le numéro tel quel s'il ne correspond à aucun des cas
-                }
-
-
             doc.font('Helvetica').fontSize(10)
                 .text(`${thisPanier.nom.toUpperCase()}`, 375, 85)
-                .text(`${formaterNumeroTel(thisPanier.tel)}`) // Ajout de la position
-                .text(`${thisPanier.email}`, {width: 420}); // Ajout de la position
+                .text(`${thisPanier.tel}`) // Ajout de la position
+                .text(`${thisPanier.email}`, {width: 420}) // Ajout de la position
+                .text(`${thisPanier.code_postal} ${thisPanier.ville}`)
+                .text(`${thisPanier.adresse_postale}`)
 
             doc.moveDown();
             doc.font('Helvetica-Bold').fontSize(14).text(`FACTURE N°${numeroFacture}`, 40, 180, { align: 'left' });
@@ -139,7 +125,7 @@ const fulfillOrder = async (lineItems) => {
                     .text(`Panier Nav Trace`, col2, yPos, { width: 225, continued: true })
                     .text(item.quantite.toString(), col5, yPos, { width: 0, continued: true })
                     .text(`${item.tva.toString()}%`, col6, yPos, { width: 0, continued: true })
-                    .text(`${((thisPanier.prix_total) - (thisPanier.prix_total * items[0].tva)).toFixed(2)} €`, col7, yPos, { width: 0, continued: true });
+                    .text(`${((thisPanier.prix_total / 100) - (((thisPanier.prix_total / 100) * items[0].tva) / 100)).toFixed(2)} €`, col7, yPos, { width: 0, continued: true });
 
                 // Dessiner des lignes horizontales entre les lignes du tableau
                 doc.moveTo(col1 - 15, yPos + 45)
@@ -182,7 +168,7 @@ const fulfillOrder = async (lineItems) => {
             // derniers détails
             doc.font('Helvetica').fontSize(10)
                 .text(`Conditions de paiements :`, 25, 670, { width: 0, continued: true })
-                .text(`• 100% soit ${(thisPanier.prix_total).toFixed(2)} € payé (carte bancaire)`, 24, 684, { width: 0, continued: true })
+                .text(`• 100% soit ${(thisPanier.prix_total / 100).toFixed(2)} € payé (carte bancaire)`, 24, 684, { width: 0, continued: true })
                 .text(`le ${dateDuJour2} (paiement comptant)`, 33, 698, { width: 0, continued: true })
 
             // payement ttc ht tva
@@ -194,13 +180,13 @@ const fulfillOrder = async (lineItems) => {
 
             doc.font('Helvetica').fontSize(11)
                 .text(`Total HT`, 400, 660, { width: 0, continued: true })
-                .text(`${((thisPanier.prix_total) - ((thisPanier.prix_total) * (items[0].tva))).toFixed(2)} €`, 520, 660, { width: 0, continued: true })
+                .text(`${((thisPanier.prix_total / 100) - (((thisPanier.prix_total / 100) * items[0].tva) / 100)).toFixed(2)} €`, 520, 660, { width: 0, continued: true })
                 .text(`TVA (${items[0].tva}%)`, 400, 680, { width: 0, continued: true })
-                .text(`${((thisPanier.prix_total) * (items[0].tva)).toFixed(2)} €`, 520, 680, { width: 0, continued: true });
+                .text(`${(((thisPanier.prix_total / 100) * items[0].tva) / 100).toFixed(2)} €`, 520, 680, { width: 0, continued: true });
 
             doc.font('Helvetica-Bold').fontSize(14)
                 .text(`Total TTC`, 400, 700, { width: 0, continued: true })
-                .text(`${(thisPanier.prix_total).toFixed(2)} €`, 520, 700, { width: 0, continued: true })
+                .text(`${(thisPanier.prix_total / 100).toFixed(2)} €`, 520, 700, { width: 0, continued: true })
 
             doc.end();
 
@@ -249,7 +235,7 @@ const fulfillOrder = async (lineItems) => {
                         <body>
                             <div style="font-family: 'Roboto', sans-serif; background-color: #323232; color: white; padding: 50px 0">
                                 <h1 style="padding: 25px 0; text-align: center;">Confirmaion du panier acheter chez Nav Trace</h1>
-                                <img style="margin: 30px auto; display: block; width: 220px;" src="https://nav-trace.onrender.com/public/img/logo/Nav_Trace_logo_noname.png" alt="logo de Nav Trace">
+                                <img style="margin: 30px auto; display: block; width: 220px;" src="https://nav-trace.onrender.com/public/img/logo/Nav-Trace_logo_noname.png" alt="logo de Nav Trace">
                                 <p style="display: block; line-height: 150%; font-size: 18px; margin: 25px auto; text-align: center;">
                                 Vous trouverez la facture de votre achat ci dessous
                                 </p>
