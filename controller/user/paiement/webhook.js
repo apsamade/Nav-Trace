@@ -92,7 +92,7 @@ const fulfillOrder = async (lineItems) => {
             let ref = 1;
             const items = [];
             thisPanier.products.forEach(article =>{
-                let produitCorrespondant = produits.filter(prod => prod._id == article.product_id);
+                const produitCorrespondant = produits.find(prod => prod._id.toString() === article.product_id.toString());
                 console.log('items webhook map : ', produits.map(prod => prod._id))
                 console.log('items webhook prod correspondant : ', produitCorrespondant)
                 items.push({
@@ -135,7 +135,7 @@ const fulfillOrder = async (lineItems) => {
                 doc.font('Helvetica')
                     .fontSize(10)
                     .text(item.id, col1, yPos, { width: 0, continued: true })
-                    .text(`${item.nom}`, col2, yPos, { width: 225, continued: true })
+                    .text(`${item.nom}`, col2, yPos, { width: 0, continued: true })
                     .text(item.quantite.toString(), col5, yPos, { width: 0, continued: true })
                     .text(`${item.tva.toString()}%`, col6, yPos, { width: 0, continued: true })
                     .text(`${((item.prix / 100) - (((item.prix / 100) * items[0].tva) / 100)).toFixed(2)} €`, col7, yPos, { width: 0, continued: true });
