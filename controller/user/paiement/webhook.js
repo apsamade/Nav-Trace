@@ -92,9 +92,9 @@ const fulfillOrder = async (lineItems) => {
             let ref = '00' + 0;
             const items = [];
             thisPanier.products.forEach(article =>{
-                let produitCorrespondant = produits.find(prod => prod._id == article.product_id);
-                console.log('items webhook : ', produits.map(prod => prod._id))
-                console.log('items webhook : ', produitCorrespondant)
+                let produitCorrespondant = produits.filter(prod => prod._id == article.product_id);
+                console.log('items webhook map : ', produits.map(prod => prod._id))
+                console.log('items webhook prod correspondant : ', produitCorrespondant)
                 items.push({
                     id: ref + 1,
                     nom: produitCorrespondant.name,
