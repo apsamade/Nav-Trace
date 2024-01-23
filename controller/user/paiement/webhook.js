@@ -96,7 +96,8 @@ const fulfillOrder = async (lineItems) => {
                     id: article.product_id,
                     nom: produitCorrespondant.nom,
                     quantite: article.quantite,
-                    prix: article.prix
+                    prix: article.prix,
+                    tva: '20',
                 })
             })
             console.log('items webhook : ', items)
@@ -129,11 +130,11 @@ const fulfillOrder = async (lineItems) => {
             for (const item of items) {
                 doc.font('Helvetica')
                     .fontSize(10)
-                    .text(item.reference, col1, yPos, { width: 0, continued: true })
-                    .text(`Panier Nav Trace`, col2, yPos, { width: 225, continued: true })
+                    .text(item.id, col1, yPos, { width: 0, continued: true })
+                    .text(`${item.nom}`, col2, yPos, { width: 225, continued: true })
                     .text(item.quantite.toString(), col5, yPos, { width: 0, continued: true })
                     .text(`${item.tva.toString()}%`, col6, yPos, { width: 0, continued: true })
-                    .text(`${((thisPanier.prix_total / 100) - (((thisPanier.prix_total / 100) * items[0].tva) / 100)).toFixed(2)} €`, col7, yPos, { width: 0, continued: true });
+                    .text(`${((thisPanier.prix / 100) - (((thisPanier.prix / 100) * items[0].tva) / 100)).toFixed(2)} €`, col7, yPos, { width: 0, continued: true });
 
                 // Dessiner des lignes horizontales entre les lignes du tableau
                 doc.moveTo(col1 - 15, yPos + 45)
@@ -164,7 +165,6 @@ const fulfillOrder = async (lineItems) => {
                 doc.moveTo(col7 + 80, yPos - 30)
                     .lineTo(col7 + 80, yPos + 45)
                     .stroke();
-
 
                 yPos += 15;
 
