@@ -96,13 +96,13 @@ const fulfillOrder = async (lineItems) => {
                 console.log('items webhook map : ', produits.map(prod => prod._id))
                 console.log('items webhook prod correspondant : ', produitCorrespondant)
                 items.push({
-                    id: ref + 1,
+                    id: parseInt(ref + 1),
                     nom: produitCorrespondant.name,
                     quantite: article.quantite,
                     prix: article.prix,
                     tva: '20',
                 })
-                ref += 1;
+                ref += parseInt(1);
             })
             console.log('items webhook : ', items)
             let yPos = tableTop;
@@ -142,7 +142,7 @@ const fulfillOrder = async (lineItems) => {
 
                 // Dessiner des lignes horizontales entre les lignes du tableau
                 doc.moveTo(col1 - 15, yPos + 45)
-                    .lineTo(col7 + 80, yPos + 45)
+                    .lineTo(col7, yPos + 45)
                     .stroke();
 
                 // Dessiner des lignes verticales entre les colonnes du tableau
