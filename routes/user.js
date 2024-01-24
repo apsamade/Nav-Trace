@@ -19,6 +19,8 @@ const panierController = require('../controller/user/compte/panier')
 const paiementController = require('../controller/user/paiement/paiement')
 const confirmerController = require('../controller/user/paiement/confirmer')
 
+const factureCommandeController = require('../controller/user/compte/telecharge-facture-commande')
+
 router.get('/', homeController.getHome)
 router.post('/', homeController.postHome)
 
@@ -50,6 +52,9 @@ router.post('/panier/:id/paiement/confirmer', confirmerController.postConfirmati
 
 router.get('/contact', contactController.getContact)
 router.post('/contact', contactController.postContact)
+
+router.get('/facture/commande/:id', factureCommandeController.getFacture)
+
 
 
 module.exports = router

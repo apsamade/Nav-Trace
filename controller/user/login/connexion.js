@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt')
 
 exports.getConnexion = (req, res, next)=>{
     const panier = req.session.panier
-    res.render('login/connexion', {panier})
+    const user = req.session.user
+    res.render('login/connexion', {panier, user})
 }
 
 exports.postConnexion = async (req, res, next)=>{
@@ -31,10 +32,12 @@ exports.postConnexion = async (req, res, next)=>{
             res.redirect('/')
         }else{
             if(!userExisting){
-                return res.render('login/connexion', {error : 'Adresse Email non trouvée.', panier})
+                const user = req.session.user
+                return res.render('login/connexion', {error : 'Adresse Email non trouvée.', panier, user})
             }
             if(!bcrypt.compareSync(mdp, userExisting.mdp)){
-                return res.render('login/connexion', {error : 'Mot de passe inccorect.', panier})
+                const user = req.session.user
+                return res.render('login/connexion', {error : 'Mot de passe inccorect.', panier, user})
             }
         }
     } catch (error) {
