@@ -3,7 +3,8 @@ const Panier = require('../../../models/panier')
 
 exports.getInscription = (req, res, next)=>{
     const panier = req.session.panier
-    res.render('login/inscription', {panier})
+    const user = req.session.user
+    res.render('login/inscription', {panier, user})
 }
 
 exports.postInscription = async (req, res, next)=>{
@@ -12,7 +13,8 @@ exports.postInscription = async (req, res, next)=>{
     const userExisting = await User.findOne({email: email})
     try {
         if(userExisting){
-            res.render('login/inscription', {error: 'Email déjà utiliser.', panier})
+            const user = req.session.user
+            res.render('login/inscription', {error: 'Email déjà utiliser.', panier, user})
         }else{
             if(mdp === mdpv){
                 const user = new User({
@@ -42,11 +44,13 @@ exports.postInscription = async (req, res, next)=>{
                 }
 
             }else{
-                res.render('login/inscription', {error: 'Mot de passe de confirmation différent.', panier})
+                const user = req.session.user
+                res.render('login/inscription', {error: 'Mot de passe de confirmation différent.', panier, user})
             }
         }
     } catch (error) {
         console.log(error)
-        res.render('login/inscription', {error: 'Erreur inattendue lors de la création de compte. Veuillez nous signaler cette erreur sur notre page de contact.', panier})
+        const user = req.session.user
+        res.render('login/inscription', {error: 'Erreur inattendue lors de la création de compte. Veuillez nous signaler cette erreur sur notre page de contact.', panier, user})
     }
 }
