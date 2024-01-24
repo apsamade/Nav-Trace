@@ -3,6 +3,8 @@ const router = express.Router()
 
 const adminController = require('../controller/admin/admin')
 
+const commandesController = require('../controller/admin/commandes')
+
 const addBlogController = require('../controller/admin/blog/addBlog')
 const blogAdminController = require('../controller/admin/blog/adminBlog')
 
@@ -32,6 +34,8 @@ router.post('/admin/boutique/modif-product/:id', modifProductController.postModi
 router.get('/admin/boutique/delete-product/:id', deleteProductController.getDeleteProduct)
 router.post('/admin/boutique/delete-product/:id', deleteProductController.postDeleteProduct)
 
+router.get('/admin/commandes', commandesController.getCommandes)
+router.post('/admin/commandes', commandesController.postCommandes)
 
 
 module.exports = router

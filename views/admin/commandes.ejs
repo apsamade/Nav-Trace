@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Trace | Commande Admin</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/admin.css">
+    <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
+</head>
+<body>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('../partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('../partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('../partials/nav') %>
+    <% } %>
+    <header>
+        <h1>Commandes !</h1>
+        <% if(paniers.length >= 1){ %>
+            <section class="commandes">
+                <% paniers.forEach(thisPanier => { %>
+                    <div class="thisPanier">
+                        <%= thisPanier._id %>
+                    </div>
+                <% }); %>
+            </section>
+        <% }else{ %>
+            <section class="commandes">
+                <h2>Aucune commandes effectués !</h2>
+            </section>
+        <% } %>
+    </header>
+</body>
+</html>
