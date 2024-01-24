@@ -1,0 +1,68 @@
+nav{
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+}
+header{
+    min-height: 40vh;
+    padding-top: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+header h1{
+    text-transform: capitalize;
+    font-family: 'Lexend', sans-serif;
+    letter-spacing: -2px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    position: relative;
+    bottom: 8vh;
+    z-index: 1;
+    text-align: center;
+    font-size: 3.5rem;
+    margin: 0 25px;
+}
+.commandes{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(400px, 1fr));
+    margin: 15px auto;
+    width: 90%;
+    background-color: #addcff;
+    border-radius: 6px;
+    padding: 15px 0;
+    min-height: 80vh;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4);
+}
+.commandes a{
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+.commandes .thisPanier{
+    width: calc(95%);
+    margin: 10px auto;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4);
+    background-color: #ffffff;
+}
+.error{
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+@media screen and (max-width: 1100px) {
+    .bckg{
+        display: none;
+    }
+    header{
+        min-height: 20vh;
+        padding-top: 0px;
+    }
+    header h1{
+        font-size: 2.5rem;
+        bottom: 0;
+    }
+}
