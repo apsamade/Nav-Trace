@@ -30,6 +30,7 @@ const panierSchema = new mongoose.Schema({
     },
     payer: {
         type: Boolean,
+        default: false
     },
     nom: {
         type: String
