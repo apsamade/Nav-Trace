@@ -1,4 +1,5 @@
 const Panier = require('../../../models/panier')
+const Product = require('../../../models/product')
 const YOUR_DOMAIN = process.env.YOUR_DOMAIN
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
@@ -20,6 +21,7 @@ exports.postPayement = async (req, res, next) => {
     const panier = req.session.panier;
     const panierId = req.params.id
     const thisPanier = await Panier.findById(panierId)
+    const produits = await Product.find()
     console.log('this panier : ', thisPanier)
     console.log('panier session : ', panier)
     if (thisPanier.payer) {
@@ -32,29 +34,39 @@ exports.postPayement = async (req, res, next) => {
                 email: user.email,
             });
 
+            // Créez un array contenant uniquement les IDs des produits dans le panier
+            const productIds = thisPanier.products.map(produitPanier => produitPanier._id.toString());
+
+            // Filtrer les produits pour inclure uniquement ceux dont l'ID est dans le panier
+            const produitsDansPanier = produits.filter(produit => productIds.map(productId => productId.toString() == produit._id.toString()));
+
+            // Créez un array contenant les noms de tous les produits dans le panier
+            const nomsProduitsDansPanier = produitsDansPanier.map(produit => produit.name);
+
+            console.log('liste des produits : ', nomsProduitsDansPanier)
             // Créez le produit pour le panier
+            const productAbonnement = await stripe.products.create({
+                name: "Abonnement Nav Trace",
+                type: 'service', // Indiquez qu'il s'agit d'un service abonnement
+            });
+            // Créez le produit pour l'abonnement
             const productPanier = await stripe.products.create({
                 name: "Panier Nav Trace",
+                features: nomsProduitsDansPanier.map(nom => ({ name: nom })),
             });
+
 
             // Créez le prix pour le panier
             const pricePanier = await stripe.prices.create({
                 product: productPanier.id,
                 currency: 'eur',
-                unit_amount: 999, // Montant total du panier en centimes (par exemple 9.99€)
+                unit_amount: thisPanier.prix_total, // Montant total du panier en centimes (par exemple 9.99€)
             });
-
-            // Créez le produit pour l'abonnement
-            const productAbonnement = await stripe.products.create({
-                name: "Abonnement Nav Trace",
-                type: 'service', // Indiquez qu'il s'agit d'un service abonnement
-            });
-
             // Créez le prix de l'abonnement
             const priceAbonnement = await stripe.prices.create({
                 product: productAbonnement.id,
                 currency: 'eur',
-                unit_amount: thisPanier.prix_total, // Montant mensuel de l'abonnement en centimes (par exemple 70€)
+                unit_amount: 999, // Montant mensuel de l'abonnement en centimes (par exemple 70€)
                 recurring: {
                     interval: 'month',
                 }
@@ -72,7 +84,7 @@ exports.postPayement = async (req, res, next) => {
                     },
                     {
                         price: priceAbonnement.id,
-                        quantity: 1,
+                        quantity: thisPanier.products.length,
                     },
                 ],
                 consent_collection: {
@@ -80,11 +92,12 @@ exports.postPayement = async (req, res, next) => {
                 },
                 custom_text: {
                     terms_of_service_acceptance: {
-                        message: 'Je suis d\'accord avec les [Conditions d\'utilisation](https://ml-prestige.com/test-drive/politique)',
+                        message: 'Je suis d\'accord avec les [Conditions d\'utilisation](https://nav-trace.onrender.com/politique)',
                     }
                 },
                 mode: 'subscription', // Indiquez que c'est une session d'abonnement
-                return_url: `${YOUR_DOMAIN}/panier/${panierId}/paiement/confirmer?session_id={CHECKOUT_SESSION_ID}`,            });
+                return_url: `${YOUR_DOMAIN}/panier/${panierId}/paiement/confirmer?session_id={CHECKOUT_SESSION_ID}`,
+            });
 
             // Renvoyez l'URL de la session de paiement au client pour redirection
             res.send({ clientSecret: session.client_secret });
