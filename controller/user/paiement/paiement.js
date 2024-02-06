@@ -95,6 +95,9 @@ exports.postPayement = async (req, res, next) => {
                         message: 'Je suis d\'accord avec les [Conditions d\'utilisation](https://nav-trace.onrender.com/politique)',
                     }
                 },
+                phone_number_collection: {
+                    enabled: true,
+                },
                 metadata: {
                     user_id: thisPanier.user_id.toString(),
                     panier_id: thisPanier._id.toString()
