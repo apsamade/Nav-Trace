@@ -95,6 +95,10 @@ exports.postPayement = async (req, res, next) => {
                         message: 'Je suis d\'accord avec les [Conditions d\'utilisation](https://nav-trace.onrender.com/politique)',
                     }
                 },
+                metadata: {
+                    user_id: thisPanier.user_id.toString(),
+                    panier_id: thisPanier._id.toString()
+                },
                 mode: 'subscription', // Indiquez que c'est une session d'abonnement
                 return_url: `${YOUR_DOMAIN}/panier/${panierId}/paiement/confirmer?session_id={CHECKOUT_SESSION_ID}`,
             });
