@@ -90,10 +90,16 @@ exports.postPayement = async (req, res, next) => {
                 consent_collection: {
                     terms_of_service: 'required',
                 },
+                shipping_address_collection: {
+                    allowed_countries: ['FR'],
+                },
                 custom_text: {
                     terms_of_service_acceptance: {
                         message: 'Je suis d\'accord avec les [Conditions d\'utilisation](https://nav-trace.onrender.com/politique)',
-                    }
+                    },
+                    shipping_address: {
+                        message: 'La livraison en 2 jours n\'est actuellement pas assurée pour les boîtes postales.',
+                    },
                 },
                 phone_number_collection: {
                     enabled: true,
