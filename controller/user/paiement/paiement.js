@@ -7,9 +7,9 @@ exports.getPayement = async (req, res, next) => {
     const panier = req.session.panier;
     const panierId = req.params.id
     const thisPanier = await Panier.findById(panierId)
-    if(user){
+    if (user) {
         res.render('paiement/paiement', { user, thisPanier, panier })
-    }else{
+    } else {
         res.redirect('/connexion')
     }
 
@@ -27,53 +27,75 @@ exports.postPayement = async (req, res, next) => {
         console.log('panier payer !')
     } else {
         try {
-            const product = await stripe.products.create({
-                name: `Panier Nav Trace`,
+            // Créez le client Stripe
+            const customer = await stripe.customers.create({
+                email: user.email,
             });
-            const price = await stripe.prices.create({
-                product: product.id,
-                unit_amount: (thisPanier.prix_total),
+
+            // Créez le produit pour le panier
+            const productPanier = await stripe.products.create({
+                name: "Panier Nav Trace",
+            });
+
+            // Créez le prix pour le panier
+            const pricePanier = await stripe.prices.create({
+                product: productPanier.id,
                 currency: 'eur',
-            })
+                unit_amount: 999, // Montant total du panier en centimes (par exemple 9.99€)
+            });
+
+            // Créez le produit pour l'abonnement
+            const productAbonnement = await stripe.products.create({
+                name: "Abonnement Nav Trace",
+                type: 'service', // Indiquez qu'il s'agit d'un service abonnement
+            });
+
+            // Créez le prix de l'abonnement
+            const priceAbonnement = await stripe.prices.create({
+                product: productAbonnement.id,
+                currency: 'eur',
+                unit_amount: thisPanier.prix_total, // Montant mensuel de l'abonnement en centimes (par exemple 70€)
+                recurring: {
+                    interval: 'month',
+                }
+            });
+
+            // Créez une session de paiement pour que l'utilisateur puisse payer le panier et s'abonner en même temps
             const session = await stripe.checkout.sessions.create({
+                customer: customer.id,
                 ui_mode: 'embedded',
                 payment_method_types: ['card'],
                 line_items: [
                     {
-                        price: price.id,
+                        price: pricePanier.id,
+                        quantity: 1,
+                    },
+                    {
+                        price: priceAbonnement.id,
                         quantity: 1,
                     },
                 ],
-                mode: 'payment',
-                return_url: `${YOUR_DOMAIN}/panier/${panierId}/paiement/confirmer?session_id={CHECKOUT_SESSION_ID}`,
-                metadata: {
-                    // meta data pour completer l'user complet
-                    // email / tel / adresse etc ...
-                    user_id: thisPanier.user_id.toString(),
-                    panier_id: thisPanier._id.toString()
-                },
-                phone_number_collection: {
-                    enabled: true,
-                },
                 consent_collection: {
                     terms_of_service: 'required',
                 },
-                shipping_address_collection: {
-                    allowed_countries: ['FR'],
-                },
                 custom_text: {
                     terms_of_service_acceptance: {
-                        message: `Je suis d\'accord avec les [Conditions d\'utilisation](${YOUR_DOMAIN}/politique)`,
-                    },
-                    shipping_address: {
-                        message: 'La livraison en 2 jours n\'est actuellement pas assurée pour les boîtes postales.',
-                    },
+                        message: 'Je suis d\'accord avec les [Conditions d\'utilisation](https://ml-prestige.com/test-drive/politique)',
+                    }
                 },
-            });
+                mode: 'subscription', // Indiquez que c'est une session d'abonnement
+                return_url: `${YOUR_DOMAIN}/panier/${panierId}/paiement/confirmer?session_id={CHECKOUT_SESSION_ID}`,            });
+
+            // Renvoyez l'URL de la session de paiement au client pour redirection
             res.send({ clientSecret: session.client_secret });
         } catch (error) {
-            res.status(500).json({ error: "Erreur lors de la création de l'intention de paiement." });
+            // En cas d'erreur, renvoyer une réponse d'erreur au client
+            console.error(error);
+            res.status(500).json({ error: "Erreur lors de la création de la session de paiement." });
         }
     }
+    // impossible de faire un paiement reccurent avec payment intent
+    // tenter un stripe.prices à prix unique + stripe.plans pour créer un paiement reccurent avec subscription
+    // invoiceItem ??
 
 };

@@ -25,7 +25,7 @@
         <% } %>
     </header>
     <form method="POST" enctype="multipart/form-data">
-        <div class="produit" href="boutique/<%= produit._id %>">
+        <div class="produit">
             <img src="<%= produit.image %>" alt="<%= produit.name %>">
             <div class="price">
                 <input type="text" name="name" id="name" placeholder="Nomp du produit : <%= produit.name %>">
