@@ -84,7 +84,7 @@ exports.postPayement = async (req, res, next) => {
                     },
                     {
                         price: priceAbonnement.id,
-                        quantity: thisPanier.products.length,
+                        quantity: thisPanier.quantite_total,
                     },
                 ],
                 consent_collection: {
