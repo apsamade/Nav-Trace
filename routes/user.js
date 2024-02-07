@@ -21,8 +21,13 @@ const confirmerController = require('../controller/user/paiement/confirmer')
 
 const factureCommandeController = require('../controller/user/compte/telecharge-facture-commande')
 
+const cgvController = require('../controller/user/CG/cgv')
+
+
 router.get('/', homeController.getHome)
 router.post('/', homeController.postHome)
+
+router.get('/cgv', cgvController.getCgv)
 
 router.get('/connexion', connexionController.getConnexion)
 router.post('/connexion', connexionController.postConnexion)
