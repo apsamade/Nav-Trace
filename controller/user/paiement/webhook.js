@@ -104,6 +104,13 @@ const fulfillOrder = async (lineItems) => {
                 })
                 ref += 1;
             })
+            items.push({
+                id: '00'+ (ref),
+                nom: 'Abonnement Nav Trace',
+                quantite: thisPanier.quantite_total,
+                prix: thisPanier.quantite_total * 999,
+                tva: '20',
+            })
             console.log('items webhook : ', items)
             let yPos = tableTop;
             // Dessiner des lignes horizontales entre les lignes du tableau
