@@ -34,7 +34,7 @@ h1{
     background-color: #ffffff;
 }
 .top-vente .produit img{
-    width: 100%;
+    width: calc(100% - 10px);
     margin: 5px;
     border-radius: 6px;
 }
