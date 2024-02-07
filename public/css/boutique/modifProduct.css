@@ -42,6 +42,7 @@ form .price span:not(.prix){
 }
 #description{
     flex-basis: 100%;
+    min-height: 150px;
 }
 form .price input, #name, #image, #description{
     margin: 10px;
