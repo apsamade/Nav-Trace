@@ -132,12 +132,6 @@ const fulfillOrder = async (lineItems) => {
                 .lineTo(col7 + 80, yPos + -5)
                 .stroke();
 
-            function formatDate(date) {
-                const day = date.getDate().toString().padStart(2, '0');
-                const month = (date.getMonth() + 1).toString().padStart(2, '0');
-                const year = date.getFullYear().toString();
-                return `${day}/${month}/${year}`;
-            }
             for (const item of items) {
                 doc.font('Helvetica')
                     .fontSize(10)
@@ -187,7 +181,7 @@ const fulfillOrder = async (lineItems) => {
             // derniers détails
             doc.font('Helvetica').fontSize(10)
                 .text(`Conditions de paiements :`, 25, 670, { width: 0, continued: true })
-                .text(`• 100% soit ${(thisPanier.prix_total / 100).toFixed(2)} € payé (carte bancaire)`, 24, 684, { width: 0, continued: true })
+                .text(`• 100% soit ${((thisPanier.prix_total / 100) + (thisPanier.quantite_total * 999)).toFixed(2)} € payé (carte bancaire)`, 24, 684, { width: 0, continued: true })
                 .text(`le ${dateDuJour2} (paiement comptant)`, 33, 698, { width: 0, continued: true })
 
             // payement ttc ht tva
@@ -199,13 +193,13 @@ const fulfillOrder = async (lineItems) => {
 
             doc.font('Helvetica').fontSize(11)
                 .text(`Total HT`, 400, 660, { width: 0, continued: true })
-                .text(`${((thisPanier.prix_total / 100) - (((thisPanier.prix_total / 100) * items[0].tva) / 100)).toFixed(2)} €`, 520, 660, { width: 0, continued: true })
+                .text(`${(((thisPanier.prix_total / 100) + (thisPanier.quantite_total * 999)) - ((((thisPanier.prix_total / 100) + (thisPanier.quantite_total * 999)) * items[0].tva) / 100)).toFixed(2)} €`, 520, 660, { width: 0, continued: true })
                 .text(`TVA (${items[0].tva}%)`, 400, 680, { width: 0, continued: true })
-                .text(`${(((thisPanier.prix_total / 100) * items[0].tva) / 100).toFixed(2)} €`, 520, 680, { width: 0, continued: true });
+                .text(`${((((thisPanier.prix_total / 100) + (thisPanier.quantite_total * 999)) * items[0].tva) / 100).toFixed(2)} €`, 520, 680, { width: 0, continued: true });
 
             doc.font('Helvetica-Bold').fontSize(14)
                 .text(`Total TTC`, 400, 700, { width: 0, continued: true })
-                .text(`${(thisPanier.prix_total / 100).toFixed(2)} €`, 520, 700, { width: 0, continued: true })
+                .text(`${((thisPanier.prix_total / 100) + (thisPanier.quantite_total * 999)).toFixed(2)} €`, 520, 700, { width: 0, continued: true })
 
             doc.end();
 
