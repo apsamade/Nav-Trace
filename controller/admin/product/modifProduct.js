@@ -75,7 +75,6 @@ exports.postModifProduct = async (req, res, next) => {
                         console.log('image modifier avec succes : ', imgbbResponse.url)
                     } catch (error) {
                         console.error('Error uploading to ImgBB:', error.message);
-                        return res.redirect('/admin/boutique');
                     }
                 }
             })
