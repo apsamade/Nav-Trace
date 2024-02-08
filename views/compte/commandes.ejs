@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Trace | Commandes Effectuer</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/admin/commandes.css">
+    <link rel="shortcut icon" href="/public/img/logo/Nav-Trace_logo_noname.png" type="image/x-icon">
+</head>
+<body>
+    <% if(user){ %>
+        <% if(user.admin){ %>
+            <%- include('../partials/navAdmin') %>
+        <% }else{ %>
+            <%- include('../partials/navUser') %>
+        <% } %>
+    <% }else{ %>
+        <%- include('../partials/nav') %>
+    <% } %>
+    <header>
+        <h1>Commandes !</h1>
+        <% if(paniers.length >= 1){ %>
+            <section class="commandes">
+                <% paniers.forEach(thisPanier => { %>
+                    <div class="thisPanier">
+                        <h4><%= thisPanier.email %></h4>
+                        <p><%= thisPanier.tel %></p>
+                        <p><%= thisPanier.code_postal %> <%= thisPanier.ville %>, <%= thisPanier.adresse_postale %></p>
+                        <span style="margin-top: 15px; display: block;">liste des produits :</span>
+                        <ul class="produits">
+                            <% thisPanier.products.forEach(thisProduct => { %>
+                                <% produits.forEach(prod =>{ %>
+                                        <% if(thisProduct.product_id.toString() == prod._id.toString()){ %>
+                                            <li><%= prod.name %> : <%= thisProduct.quantite %></li>
+                                        <% } %>  
+                                <% }); %>
+                            <% }) %>
+                        </ul>
+                        <h4>Prix total : <%= thisPanier.prix_total/100 %>€</h4>
+                        <a target="_blank" class="facture" href="/facture/commande/<%= thisPanier._id %>">Facture de la commande</a>
+                    </div>
+                <% }); %>
+            </section>
+        <% }else{ %>
+            <section class="commandes">
+                <h2>Aucune commandes effectués !</h2>
+            </section>
+        <% } %>
+    </header>
+    <%- include('../partials/footer') %>
+</body>
+</html>

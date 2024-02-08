@@ -15,11 +15,11 @@ const produitController = require('../controller/user/boutique/produit')
 
 const compteController = require('../controller/user/compte/compte')
 const panierController = require('../controller/user/compte/panier')
+const commandesController = require('../controller/user/compte/commandes')
+const factureCommandeController = require('../controller/user/compte/telecharge-facture-commande')
 
 const paiementController = require('../controller/user/paiement/paiement')
 const confirmerController = require('../controller/user/paiement/confirmer')
-
-const factureCommandeController = require('../controller/user/compte/telecharge-facture-commande')
 
 const cgvController = require('../controller/user/CG/cgv')
 
@@ -49,6 +49,9 @@ router.post('/account', compteController.postCompte)
 
 router.get('/panier', panierController.getPanier)
 router.post('/panier', panierController.postPanier)
+
+router.get('/commandes', commandesController.getCommandes)
+router.post('/commandes', commandesController.postCommandes)
 
 router.get('/panier/:id/paiement', paiementController.getPayement)
 router.post('/panier/:id/paiement', paiementController.postPayement)
