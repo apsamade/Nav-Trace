@@ -193,7 +193,7 @@ const fulfillOrder = async (lineItems) => {
 
             doc.font('Helvetica').fontSize(11)
                 .text(`Total HT`, 400, 660, { width: 0, continued: true })
-                .text(`${(((thisPanier.prix_total / 100) + (thisPanier.quantite_total * 999/100)) - ((((thisPanier.prix_total / 100) + (thisPanier.quantite_total * 999)) * items[0].tva) / 100)).toFixed(2)} €`, 520, 660, { width: 0, continued: true })
+                .text(`${(((thisPanier.prix_total / 100) + (thisPanier.quantite_total * 999/100)) - ((((thisPanier.prix_total / 100) + (thisPanier.quantite_total * 999/100)) * items[0].tva) / 100)).toFixed(2)} €`, 520, 660, { width: 0, continued: true })
                 .text(`TVA (${items[0].tva}%)`, 400, 680, { width: 0, continued: true })
                 .text(`${((((thisPanier.prix_total / 100) + (thisPanier.quantite_total * 999/100)) * items[0].tva) / 100).toFixed(2)} €`, 520, 680, { width: 0, continued: true });
 
