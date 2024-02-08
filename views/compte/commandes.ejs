@@ -37,7 +37,7 @@
                                 <% }); %>
                             <% }) %>
                         </ul>
-                        <h4>Prix total : <%= thisPanier.prix_total/100 %>€</h4>
+                        <h4>Prix total : <%= (thisPanier.prix_total/100 + (thisPanier.quantite_total * 999/100)).toFixed(2) %>€</h4>
                         <a target="_blank" class="facture" href="/facture/commande/<%= thisPanier._id %>">Facture de la commande</a>
                     </div>
                 <% }); %>
