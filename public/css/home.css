@@ -89,6 +89,7 @@ header .container a:hover {
     width: 80%;
     margin: 75px auto;
     max-width: 1280px;
+    min-width: 340px;
     display: flex;
     align-items: start;
     justify-content: space-around;
@@ -173,8 +174,9 @@ header .container a:hover {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 68%;
+    width: 80%;
     min-width: calc(345px);
+    max-width: 1280px;
     margin: 15px auto;
 }
 
@@ -263,5 +265,26 @@ footer p {
 
     .line-products h2 {
         font-size: 2rem;
+    }
+    .help-buisness h2{
+        font-size: 2rem;
+        padding: 50px 0 0;
+    }
+    .help-buisness .container{
+        flex-wrap: wrap;
+        margin: 40px auto;
+    }
+    .help-buisness .container .infos .ptite-info .titre:not(.link) {
+        flex-direction: column;
+    }
+    .help-buisness .container .infos .ptite-info .link{
+        justify-content: center;
+    }
+    .help-buisness .container .infos .ptite-info .titre h3{
+        text-align: center;
+        font-size: 1.35rem;
+    }
+    .help-buisness .container .infos .ptite-info p{
+        text-align: center;
     }
 }
