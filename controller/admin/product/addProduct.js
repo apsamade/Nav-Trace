@@ -19,7 +19,7 @@ exports.postAddProduct = async (req, res, next) => {
     const { name, prixAchat, prixAbonnement, description } = req.body
     const { image } = req.files
     let endPathFile = ('/public/img/' + image.name)
-    let uploadPath = (path.join(__dirname + '../../../' + endPathFile))
+    let uploadPath = (path.join(__dirname + '../../../../' + endPathFile))
     if (user && user.admin) {
         if (name && prixAchat && image && prixAbonnement && description) {
             image.mv(uploadPath, async function (err) {
