@@ -225,11 +225,6 @@ header .container a:hover {
     width: 100%;
 }
 
-footer p {
-    margin: 15px;
-    text-align: center;
-}
-
 @media screen and (max-width: 1100px) {
     header {
         padding-top: 4vh;
