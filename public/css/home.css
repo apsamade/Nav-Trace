@@ -1,7 +1,8 @@
-nav{
+nav {
     background-color: transparent;
 }
-header{
+
+header {
     background-image: url(/public/img/background/background_header_products.webp);
     background-size: cover;
     background-repeat: no-repeat;
@@ -9,11 +10,13 @@ header{
     min-height: 80vh;
     padding-top: 10.2vh;
 }
-header .container{
+
+header .container {
     max-width: 700px;
     margin: 0px 25px 0 6%;
 }
-header .container h1{
+
+header .container h1 {
     text-transform: capitalize;
     font-family: 'Oswald', sans-serif;
     letter-spacing: -2px;
@@ -24,7 +27,8 @@ header .container h1{
     text-transform: uppercase;
     padding: 50px 0 0;
 }
-header .container p{
+
+header .container p {
     font-family: 'Lexend', sans-serif;
     font-weight: bold;
     color: rgb(255, 255, 255);
@@ -33,12 +37,14 @@ header .container p{
     line-height: 150%;
     font-weight: 200;
 }
-header .container .btns{
+
+header .container .btns {
     display: flex;
     align-items: center;
     justify-content: start;
 }
-header .container a{
+
+header .container a {
     padding: 15px 24px;
     border-radius: 6px;
     margin: 25px 12px 0 0;
@@ -52,17 +58,103 @@ header .container a{
     font-size: 1.3rem;
     transition: color 0.3s, background-color 0.3s;
 }
-header .container a:hover{
+
+header .container a:hover {
     background-color: rgb(0, 0, 0);
     color: white;
 }
-.line-products{
+
+.help-buisness h2 {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: -2px;
+    color: rgb(0, 9, 131);
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+    margin: 0px 0 15px;
+    text-transform: uppercase;
+    padding: 100px 0 0;
+}
+.help-buisness .contact{
+    display: block;
+    text-align: center;
+    margin: 5px auto;
+    padding: 4px 0;
+    border-bottom: 1px solid rgb(11, 89, 255);
+    width: fit-content;
+    text-decoration: none;
+    color: rgb(11, 89, 255);
+}
+.help-buisness .container{
+    width: 80%;
+    margin: 75px auto;
+    max-width: 1280px;
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+}
+.help-buisness .container .infos, .help-buisness .container .images{
+    flex-basis: 50%;
+    flex-grow: 1;
+    margin: 10px;
+}
+.help-buisness .container .infos .ptite-info{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+.help-buisness .container .infos .ptite-info .titre{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 15px 0;
+}
+.help-buisness .container .infos .ptite-info h3{
+    font-size: 1.5rem;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    color: black;
+}
+.help-buisness .container .infos .ptite-info p{
+    line-height: 150%;
+    font-weight: 300;
+}
+.help-buisness .container .infos .ptite-info .link a{
+    margin-right: 8px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(5, 84, 255, 0);
+    padding: 6px 0;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+.help-buisness .container .infos .ptite-info .link:hover svg{
+    transform: translateX(12px);
+    color: rgb(5, 84, 255);
+}
+.help-buisness .container .infos .ptite-info .link:hover a{
+    color: rgb(5, 84, 255);
+    border-bottom: 1px solid rgb(5, 84, 255);
+}
+.help-buisness .container .infos .ptite-info svg{
+    width: 2rem;
+    height: auto;
+    margin-right: 7px;
+    transition: transform 0.3s;
+}
+.help-buisness .container div img{
+    width: 100%;
+    border-radius: 6px;
+}
+.help-buisness .container svg {
+    width: 1.8rem;
+    height: auto;
+}
+
+.line-products {
     margin: 0;
     background-image: url(/public/img/background/bg-wave.webp);
     background-size: contain;
     background-repeat: no-repeat;
 }
-.line-products h2{
+
+.line-products h2 {
     text-transform: capitalize;
     font-family: 'Oswald', sans-serif;
     letter-spacing: -2px;
@@ -75,7 +167,8 @@ header .container a:hover{
     text-transform: uppercase;
     padding: 100px 0 0;
 }
-.line-products .produits{
+
+.line-products .produits {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -84,7 +177,8 @@ header .container a:hover{
     min-width: calc(345px);
     margin: 15px auto;
 }
-.line-products .produits div{
+
+.line-products .produits div {
     flex-basis: 38%;
     border-radius: 6px;
     flex-grow: 1;
@@ -96,18 +190,21 @@ header .container a:hover{
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s, transform 0.3s;
 }
-.line-products .produits div:hover{
+
+.line-products .produits div:hover {
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.5);
     transform: scale(1.02);
 }
-.line-products .produits div h3{
+
+.line-products .produits div h3 {
     text-align: center;
     margin: 15px;
     font-size: 1.55rem;
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
 }
-.line-products .produits div p{
+
+.line-products .produits div p {
     width: 80%;
     min-width: 325px;
     font-weight: 300;
@@ -115,47 +212,56 @@ header .container a:hover{
     text-align: center;
     line-height: 150%;
 }
-.line-products .produits div a{
+
+.line-products .produits div a {
     display: block;
     margin: 15px auto;
     text-decoration: none;
 }
-.line-products .produits div img{
+
+.line-products .produits div img {
     width: 100%;
 }
-footer p{
+
+footer p {
     margin: 15px;
     text-align: center;
 }
+
 @media screen and (max-width: 1100px) {
-    header{
+    header {
         padding-top: 4vh;
     }
+
     header .container {
         margin: 35px auto;
     }
-    header .container h1{
+
+    header .container h1 {
         font-size: 2.2rem;
         width: 90%;
         text-align: center;
         margin: auto;
         padding: 50px 0 0;
     }
-    header .container p{
+
+    header .container p {
         padding: 15px 20px;
         margin: 25px auto;
         text-align: center;
         font-size: 1.2rem;
         text-shadow: 1px 1px 1px black;
     }
-    header .container a{
+
+    header .container a {
         padding: 12px 0;
         width: 100%;
         margin: 5px 5px 25px;
         font-size: 1.2rem;
         text-align: center;
     }
-    .line-products h2{
+
+    .line-products h2 {
         font-size: 2rem;
     }
 }
