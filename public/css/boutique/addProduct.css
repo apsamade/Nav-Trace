@@ -60,6 +60,9 @@ form input, form textarea{
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
     font-family: 'Lexend', sans-serif;
 }
+form input[type=file]{
+    color: black;
+}
 form input[type=submit]{
     background-color: rgb(46, 105, 214);
     color: white;
