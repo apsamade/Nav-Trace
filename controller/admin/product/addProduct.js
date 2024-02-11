@@ -7,7 +7,7 @@ exports.getAddProduct = async (req, res, next) => {
     const user = req.session.user
     const panier = req.session.panier
     if (user && user.admin) {
-        res.render('admin/product/addProduct', { user })
+        res.render('admin/product/addProduct', { user, panier })
     } else {
         res.redirect('/')
     }
@@ -46,7 +46,7 @@ exports.postAddProduct = async (req, res, next) => {
                 }
             })
         } else {
-
+            res.render('admin/product/addProduct', { user, panier, error : 'une erreur est survenue' })
         }
     } else {
         res.redirect('/')
