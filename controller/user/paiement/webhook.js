@@ -45,7 +45,7 @@ const fulfillOrder = async (lineItems) => {
             const writeStream = fs.createWriteStream(filePath);
 
             doc.pipe(writeStream);
-            doc.image('public/img/logo/Nav-Trace_logo_noname.png', 40, 10, { width: 35 })
+            doc.image('public/img/logo/Nav-Trace_logo_noname.png', 40, 15, { width: 45 })
                 .moveDown(-1.7); // Ajuster l'espacement vertical
 
             // Titre de la facture
