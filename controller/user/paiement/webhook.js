@@ -99,7 +99,7 @@ const fulfillOrder = async (lineItems) => {
                     id: '00'+ (ref),
                     nom: produitCorrespondant.name,
                     quantite: article.quantite,
-                    prix: article.prix,
+                    prix: article.prix * article.quantite,
                     tva: '20',
                 })
                 ref += 1;
