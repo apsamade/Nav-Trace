@@ -95,7 +95,7 @@ exports.postPayement = async (req, res, next) => {
                 },
                 custom_text: {
                     terms_of_service_acceptance: {
-                        message: 'Je suis d\'accord avec les [Conditions d\'utilisation](https://nav-trace.onrender.com/politique)',
+                        message: 'Je suis d\'accord avec les [Conditions d\'utilisation](https://nav-trace.onrender.com/cgv)',
                     },
                     shipping_address: {
                         message: 'La livraison en 2 jours n\'est actuellement pas assurée pour les boîtes postales.',
