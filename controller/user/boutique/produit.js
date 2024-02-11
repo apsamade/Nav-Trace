@@ -20,7 +20,7 @@ exports.postProduct = async (req, res, next) => {
             const panier = req.session.panier
             let totalQuantite = panier.quantite_total + parseInt(quantite);
             let totalPrix = panier.prix_total + produit.prix_achat * parseInt(quantite)
-            let prixProduit = produit.prix_achat * parseInt(quantite)
+            let prixProduit = produit.prix_achat
             console.log('quantite total actuelle ', totalQuantite)
             console.log('prix total actuelle ', totalPrix)
             await Panier.findByIdAndUpdate(panier._id, {
@@ -52,7 +52,7 @@ exports.postProduct = async (req, res, next) => {
             console.log('prix du panier : ', panier.prix_total/100, '€')
             res.render('boutique/product', { user, produit, panier, message: 'Produit ajouté à votre panier !' })
         } else if(!req.session.panier && !achatDirect) {
-            let prixProduit = produit.prix_achat * parseInt(quantite)
+            let prixProduit = produit.prix_achat
             const panier = new Panier({
                 products: [],
                 prix_total: produit.prix_achat * quantite,
@@ -69,7 +69,7 @@ exports.postProduct = async (req, res, next) => {
             console.log('session shopping ouverte : ', req.session.panier)
             res.render('boutique/product', { user, produit, panier })
         } else if(achatDirect) {
-            let prixProduit = produit.prix_achat * parseInt(quantite)
+            let prixProduit = produit.prix_achat
             const panier = new Panier({
                 products: [],
                 prix_total: produit.prix_achat * quantite,

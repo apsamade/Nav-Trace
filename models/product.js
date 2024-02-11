@@ -25,6 +25,10 @@ const productSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true
+    },
+    quantite: {
+        type: Number,
+        required: true
     }
 }, { timestamps: true });
 // enregistrement du mot de passe hashé

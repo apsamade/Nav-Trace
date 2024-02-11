@@ -34,33 +34,10 @@ exports.postPayement = async (req, res, next) => {
                 email: user.email,
             });
 
-            // Créez un array contenant uniquement les IDs des produits dans le panier
-            const productIds = thisPanier.products.map(produitPanier => produitPanier._id.toString());
-
-            // Filtrer les produits pour inclure uniquement ceux dont l'ID est dans le panier
-            const produitsDansPanier = produits.filter(produit => productIds.map(productId => productId.toString() == produit._id.toString()));
-
-            // Créez un array contenant les noms de tous les produits dans le panier
-            const nomsProduitsDansPanier = produitsDansPanier.map(produit => produit.name);
-
-            console.log('liste des produits : ', nomsProduitsDansPanier)
             // Créez le produit pour le panier
             const productAbonnement = await stripe.products.create({
                 name: "Abonnement Nav Trace",
                 type: 'service', // Indiquez qu'il s'agit d'un service abonnement
-            });
-            // Créez le produit pour l'abonnement
-            const productPanier = await stripe.products.create({
-                name: "Panier Nav Trace",
-                features: nomsProduitsDansPanier.map(nom => ({ name: nom })),
-            });
-
-
-            // Créez le prix pour le panier
-            const pricePanier = await stripe.prices.create({
-                product: productPanier.id,
-                currency: 'eur',
-                unit_amount: thisPanier.prix_total, // Montant total du panier en centimes (par exemple 9.99€)
             });
             // Créez le prix de l'abonnement
             const priceAbonnement = await stripe.prices.create({
@@ -71,6 +48,32 @@ exports.postPayement = async (req, res, next) => {
                     interval: 'month',
                 }
             });
+            let lineItems = [];
+
+            thisPanier.products.forEach(prod => {
+                let thisName = '';
+                let thisImage = '';
+                produits.map(produit =>{
+                    if(prod.product_id.toString() == produit._id){
+                        thisName = produit.name;
+                        thisImage = produit.image;
+                    }
+                })
+                
+                lineItems.push({
+                    "price_data": {
+                        "unit_amount": (prod.prix).toString(), // Convertir le prix en centimes
+                        "currency": "eur",
+                        "product_data": {
+                            "name": thisName.toString(), // Assurez-vous que prod.nom est une chaîne de caractères
+                            "images": [thisImage] // Supposons que prod.image contient l'URL de l'image du produit
+                        }
+                    },
+                    "quantity": prod.quantite.toString() // Convertir la quantité en chaîne de caractères
+                });
+            });
+            
+            console.log('line item que j\'ai créer', ...lineItems)
 
             // Créez une session de paiement pour que l'utilisateur puisse payer le panier et s'abonner en même temps
             const session = await stripe.checkout.sessions.create({
@@ -78,10 +81,7 @@ exports.postPayement = async (req, res, next) => {
                 ui_mode: 'embedded',
                 payment_method_types: ['card'],
                 line_items: [
-                    {
-                        price: pricePanier.id,
-                        quantity: 1,
-                    },
+                    ...lineItems,
                     {
                         price: priceAbonnement.id,
                         quantity: thisPanier.quantite_total,

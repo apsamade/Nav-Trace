@@ -1,5 +1,11 @@
-frames : home (description du produit avantage)
-log stripe : 
-connection (email mdp)
-email site : 
-hebergeur : 
+mettre a jour la quantite de dans produit admin :
+    addproduct/ 
+    modifproduct/ 
+    paiement metada id du produit / 
+    webhook mettre a jour chaque produit avec boucle forEach et FindByIdAndUpdate
+
+ajouter différent abonnement
+
+entreprise ajuster le prix avec entreprise tva :
+    verifier le numéro de tva avec une api : 
+     - https://ec.europa.eu/taxation_customs/vies/#/vat-validation (lien du site pour verifier la tva d'une entreprise recherche l'api)

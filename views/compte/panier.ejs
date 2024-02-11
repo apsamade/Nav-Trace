@@ -40,7 +40,7 @@
                                             <input type="hidden" name="panierProductId" value="<%= panierProduit._id %>">
                                             <button type="submit"><img src="/public/img/elements/poubelle.png" alt=""></button>
                                         </form>
-                                        <span class="quantite-prod">Prix : <%= panierProduit.prix/100 %>€</span>              
+                                        <span class="quantite-prod">Prix : <%= ((panierProduit.prix/100) * panierProduit.quantite).toFixed(2) %>€</span>              
                                         <span class="quantite-prod">Quantité : <%= panierProduit.quantite %></span>                                        
                                     </div>
                                 </div>
