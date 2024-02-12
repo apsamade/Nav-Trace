@@ -93,6 +93,7 @@ exports.postPayement = async (req, res, next) => {
                 shipping_address_collection: {
                     allowed_countries: ['FR'],
                 },
+                billing_address_collection: 'auto',
                 custom_text: {
                     terms_of_service_acceptance: {
                         message: 'Je suis d\'accord avec les [Conditions d\'utilisation](https://nav-trace.onrender.com/cgv)',

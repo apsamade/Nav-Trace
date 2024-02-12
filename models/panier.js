@@ -51,7 +51,7 @@ const panierSchema = new mongoose.Schema({
         type: String
     },
     code_postal: {
-        type: Number
+        type: String
     },
     facture: {
         data: Buffer,
