@@ -20,9 +20,5 @@ async function initialize() {
     // Mount Checkout
     checkout.mount('#checkout');
     // Ajoutez un écouteur d'événement pour le champ du code postal
-    const postalCodeInput = document.querySelector('#shippingPostalCode');
-    postalCodeInput.addEventListener('input', function () {
-        // Remplacez tout ce qui n'est pas un chiffre par une chaîne vide
-        this.value = this.value.replace(/\D/g, '');
-    });
+
 }
