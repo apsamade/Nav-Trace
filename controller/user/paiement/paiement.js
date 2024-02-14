@@ -109,9 +109,6 @@ exports.postPayement = async (req, res, next) => {
                     user_id: thisPanier.user_id.toString(),
                     panier_id: thisPanier._id.toString()
                 },
-                automatic_tax: {
-                    enabled: true
-                },
                 mode: 'subscription', // Indiquez que c'est une session d'abonnement
                 return_url: `${YOUR_DOMAIN}/panier/${panierId}/paiement/confirmer?session_id={CHECKOUT_SESSION_ID}`,
             });
