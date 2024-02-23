@@ -5,6 +5,23 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Barre de défilement verticale */
+::-webkit-scrollbar {
+    width: 8px; /* Largeur de la barre de défilement */
+}
+
+::-webkit-scrollbar-track {
+    background: #0a093d5b; /* Couleur de fond de la piste de défilement */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3e81fd;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0011ff; /* Couleur de la poignée de défilement au survol */
+}
 html{
     scroll-behavior: smooth;
 }
