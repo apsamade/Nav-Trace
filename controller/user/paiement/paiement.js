@@ -90,6 +90,11 @@ exports.postPayement = async (req, res, next) => {
                 consent_collection: {
                     terms_of_service: 'required',
                 },
+                automatic_tax: { 
+                    enabled: true, 
+                    liability: null, 
+                    status: null 
+                },
                 shipping_address_collection: {
                     allowed_countries: ['FR'],
                 },
