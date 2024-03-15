@@ -29,6 +29,7 @@ const fulfillOrder = async (lineItems) => {
                     tel: lineItems.customer_details.phone
                 }
             })
+            console.log('voici la facture 2 : ', lineItems.data.object.id)
             console.log('voici la facture : ', lineItems.invoice)
             console.log(await Panier.findById(lineItems.metadata.panier_id))
             //    Génération d'une facture
